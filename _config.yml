@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 老梁有墨
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
-language: en
+author: 会弹吉他的程序员
+language: zh-CN
 timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://example.com
+url: https://www.laoliang.ink
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -98,9 +98,16 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: volantis
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: 
+    github: 
+      url: https://github.com/liangpengyv/my-blog.git
+      branch: gh-pages
+    coding: 
+      url: https://e.coding.net/laoliangink/my-blog/my-blog.git
+      branch: coding-pages
