@@ -35,9 +35,9 @@ navbar:
     - name: 归档
       icon: fas fa-archive
       url: archives/
-    - name: 友链
-      icon: fas fa-link
-      url: friends/
+    - name: 读书
+      icon: fas fa-book
+      url: book/
     - name: 关于
       icon: fas fa-info-circle
       url: about/
