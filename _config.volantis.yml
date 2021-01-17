@@ -20,12 +20,9 @@ navbar:
   visiable: auto # always, auto
   logo: # choose [img] or [icon + title]
     img: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
-    icon: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/favicon.ico
+    icon: fas fa-home
     title: 老梁有墨
   menu:
-    - name: 博客
-      icon: fas fa-rss
-      url: /
     - name: 分类
       icon: fas fa-folder-open
       url: categories/
@@ -39,7 +36,7 @@ navbar:
       icon: fas fa-book
       url: book/
     - name: 关于
-      icon: fas fa-info-circle
+      icon: fas fa-user-circle
       url: about/
   search: Search...   # Search bar placeholder
 ############################### Navigation Bar ############################### > end
@@ -48,41 +45,37 @@ navbar:
 ############################### Cover ############################### > start
 cover:
   height_scheme: full # full, half
-  layout_scheme: dock # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
+  layout_scheme: search # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
   background: https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg
   logo: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
-  title: '老梁有墨'
+  title: ''
   subtitle: ''
-  search: A Wonderful Theme for Hexo # search bar placeholder
+  search: Search... # search bar placeholder
   features:
-    - name: 文档
-      icon: #
-      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg
-      url: /v4/getting-started/
-    - name: 帮助
-      icon: #
-      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg
-      url: faqs/
-    - name: 示例
-      icon: #
-      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg
-      url: /examples/
-    - name: 社区
-      icon: #
-      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg
-      url: /contributors/
-    - name: 博客
-      icon: #
-      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg
-      url: /archives/
-    - name: 源码
-      icon: #
-      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg
-      url: https://github.com/volantis-x/hexo-theme-volantis/
+    - name: 分类
+      icon: fas fa-folder-open
+      img: # https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg
+      url: categories/
+    - name: 标签
+      icon: fas fa-tags
+      img: # https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg
+      url: tags/
+    - name: 归档
+      icon: fas fa-archive
+      img: # https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg
+      url: archives/
+    - name: 读书
+      icon: fas fa-book
+      img: # https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg
+      url: book/
+    - name: 关于
+      icon: fas fa-user-circle
+      img: # https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg
+      url: about/
 ############################### Cover ############################### > end
 
 pages:
@@ -140,17 +133,16 @@ article:
       # 版权声明组件 (for layout: post)
       copyright:
         enable: true
-        permalink: '本文永久链接是：'
+        permalink: '本文永久链接是：（暂时挪作下方打赏的标题描述）'
         content:
-          - '博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
-          - permalink
+          - '<span style="display: inline-block; width: 100%; text-align: center;">如果您喜欢本站，可以请我喝杯咖啡支持一下</span>'
       # ----------------
       # 打赏组件 (for layout: post)
       donate:
         enable: true
         images:
-          - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-          - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+          - /assets/img/config/donate-wechat-pay.png
+          - /assets/img/config/donate-ali-pay.jpeg
     # 文章底部信息
     # 从 meta_library 中取
     bottom_meta: [updated, tags, share]
@@ -283,7 +275,7 @@ comments:
 ############################### Sidebar ############################### > start
 sidebar:
   # 主页、分类、归档等独立页面
-  for_page: [blogger, category, tagcloud, donate, webinfo]
+  for_page: [blogger, webinfo, donate]
   # layout: docs/post 这类文章页面
   for_post: [toc]
   # 侧边栏组件库
@@ -293,10 +285,10 @@ sidebar:
     blogger:
       class: blogger
       display: [desktop, mobile] # [desktop, mobile]
-      avatar: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
-      shape: rectangle # circle, rectangle
-      url: /about/
-      title:
+      avatar: /assets/img/config/logo-large.png
+      shape: circle # circle, rectangle
+      url: /
+      title: 老梁有墨
       subtitle:
       jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
@@ -322,39 +314,30 @@ sidebar:
     # category widget
     category:
       class: category
-      display: [desktop, mobile] # [desktop, mobile]
+      display: [desktop] # [desktop, mobile]
       header:
         icon: fas fa-folder-open
         title: 文章分类
-        url: /blog/categories/
+        url: #
     # ---------------------------------------
     # tagcloud widget
     tagcloud:
       class: tagcloud
-      display: [desktop, mobile] # [desktop, mobile]
+      display: [desktop] # [desktop, mobile]
       header:
         icon: fas fa-tags
         title: 热门标签
-        url: /blog/tags/
+        url: #
       min_font: 14
       max_font: 24
       color: true
       start_color: '#999'
       end_color: '#555'
-
-    # ---------------------------------------
-    # qrcode widget
-    donate:
-      class: qrcode
-      display: [desktop, mobile] # [desktop, mobile]
-      height: 64px  # Automatic height if not set
-      images:
-        - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
     # ---------------------------------------
     # webinfo widget
     webinfo:
       class: webinfo
-      display: [desktop]
+      display: [desktop, mobile]
       header:
         icon: fas fa-award
         title: 站点信息
@@ -365,7 +348,7 @@ sidebar:
           unit: '篇'
         runtime:
           enable: true
-          data: '2020/01/01'    # 填写建站日期
+          data: '2015/09/06'    # 填写建站日期
           text: '已运行时间：'
           unit: '天'
         wordcount:
@@ -387,6 +370,24 @@ sidebar:
           friendlyShow: true    # 更友好的时间显示
           text: '最后活动时间：'
           unit: '日'
+    # ---------------------------------------
+    # qrcode widget
+    qrcode:
+      class: qrcode
+      display: [desktop, mobile] # [desktop, mobile]
+      height: 64px  # Automatic height if not set
+      images:
+        - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+    donate:
+      class: text
+      display: [desktop, mobile] # [desktop, mobile]
+      header:
+        icon: fas fa-donate
+        title: 捐赠
+        url: #
+      content:
+        - '如果您喜欢本站，可以请我喝杯咖啡支持一下'
+        - '<img src="/assets/img/config/donate-wechat-pay.png" width="50%"><img src="/assets/img/config/donate-ali-pay.jpeg" width="50%">'
 ############################### Sidebar ############################### > end
 
 
