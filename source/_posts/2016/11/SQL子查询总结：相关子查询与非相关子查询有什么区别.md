@@ -1,15 +1,13 @@
 ---
-title: 【MySQL】SQL子查询总结：相关子查询与非相关子查询有什么区别
-date: 2016-11-26 10:31:27
+title: SQL子查询总结：相关子查询与非相关子查询有什么区别
 categories:
   - 未分类
 tags:
-- MySQL
+  - 无标签
+date: 2016-11-26 10:31:27
 ---
 
 > 如果一个select语句能够返回单个值或者一列值，且该select语句嵌套在另一个SQL语句（例如select语句、insert语句、update语句或者delete语句）中，那么该select语句成为“子查询”（也叫内层查询），包含子查询的SQL语句称为“主查询”（也叫外层查询）。为了标记子查询与主查询之间的关系，通常将子查询写在小括号内。子查询一般用在主查询的where子句或having子句中，与比较运算符或者逻辑运算符一起构成where筛选条件或having筛选条件。子查询分为“相关子查询”（Dependent Subquery）与“非相关子查询”。
-
-<!--more-->
 
 ## **非相关子查询**
 
@@ -26,8 +24,8 @@ mysql> select class_name, student.student_no, student_name, course_name, score
     -> where student.student_no = choose.student_no and student_name = '张三'
     -> );
 ```
-![非相关子查询][id_1]
 
+![非相关子查询](SQL子查询总结：相关子查询与非相关子查询有什么区别/非相关子查询.png)
 
 ### **说明**
 
@@ -53,8 +51,8 @@ mysql> select class_name, student.student_no, student_name, course_name, score
     -> where student.student_no = choose.student_no and student_name = '张三'
     -> );
 ```
-![相关子查询][id_2]
 
+![相关子查询](SQL子查询总结：相关子查询与非相关子查询有什么区别/相关子查询.png)
 
 ### **说明**
 
@@ -82,12 +80,8 @@ mysql> select avg(score)
     -> from choose
     -> where student.student_no = choose.student_no and student_name = '张三';
 ```
-![子查询][id_3]
 
+![子查询](SQL子查询总结：相关子查询与非相关子查询有什么区别/子查询.png)
 
 会报错：`1054 - Unknown column 'student.student_no' in 'where clause'`
 这样的查询语句构成的子查询便为**相关子查询**。
-
-[id_1]: http://img.laoliang.ink/posts/20161126/%E9%9D%9E%E7%9B%B8%E5%85%B3%E5%AD%90%E6%9F%A5%E8%AF%A2.png
-[id_2]: http://img.laoliang.ink/posts/20161126/%E7%9B%B8%E5%85%B3%E5%AD%90%E6%9F%A5%E8%AF%A2.png
-[id_3]: http://img.laoliang.ink/posts/20161126/%E5%AD%90%E6%9F%A5%E8%AF%A2.png

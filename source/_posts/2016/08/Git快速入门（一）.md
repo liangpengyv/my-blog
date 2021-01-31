@@ -1,21 +1,17 @@
 ---
 title: Git快速入门（一）
-date: 2016-08-01 13:10:48
 categories:
   - 未分类
 tags:
-  - Git
+  - 无标签
+date: 2016-08-01 13:10:48
 ---
 
 ## **为什么要写此系列教程**
 
 我是一个有着严重拖延的人，对于新鲜事物很感兴趣，但是执行力很差。编辑此篇教程既是对自己学习新工具的总结，更是对自己办事执行力上的考验。
 
-![今天你拖延了吗][1]
-
 好，下面我们进入正题。
-
-<!--more-->
 
 ## **关于版本控制**
 
@@ -25,11 +21,11 @@ tags:
 
 ——*摘自《Pro Git 2nd Edition (2014)》*
 
-![Pro Git][2]
+![Pro Git](https://git-scm.com/images/progit2.png)
 
 本篇教程只是带领大家快速了解 Git，并掌握 Git 的基础用法。
 更多规范详细教程请参考：
-官方文档 [Pro Git][3] （可切换中文版哦）
+官方文档 [Pro Git](https://git-scm.com/book/en/v2) （可切换中文版哦）
 
 ## **Git的安装及环境配置**
 
@@ -48,7 +44,7 @@ sudo apt-get install git-core
 
 ### **Windows下的安装**
 
-虽然 Windows 常被程序员诟病是最烂的开发平台，不过我相信在中国，你最有可能使用的还是 Windows 操作系统。不同于 Linux，Windows 上无法通过一行命令就完成安装，我们需要把 Git 的安装包到 [官网下载][4] 下来，之后一直点击“下一步”就可以完成安装了。
+虽然 Windows 常被程序员诟病是最烂的开发平台，不过我相信在中国，你最有可能使用的还是 Windows 操作系统。不同于 Linux，Windows 上无法通过一行命令就完成安装，我们需要把 Git 的安装包到 [官网下载](https://git-scm.com/downloads) 下来，之后一直点击“下一步”就可以完成安装了。
 
 ### **Mac下的安装**
 
@@ -118,10 +114,3 @@ git commit -m "First commit"
 ```
 
 注意，在 ``commit`` 命令后面，我们一定要通过 ``-m`` 参数来加上提交的描述信息，没有描述信息的提交被认为是不合法的。这样所有的代码就已经成功提交了！
-
-
-
-[1]: http://img.laoliang.ink/posts/20160801/%E4%BB%8A%E5%A4%A9%E4%BD%A0%E6%8B%96%E5%BB%B6%E4%BA%86%E5%90%97.jpg
-[2]: https://git-scm.com/images/progit2.png
-[3]: https://git-scm.com/book/en/v2
-[4]: https://git-scm.com/downloads
