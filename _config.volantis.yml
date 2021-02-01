@@ -416,10 +416,20 @@ tag_plugins:
 ############################### Site Footer ############################### > start
 site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [copyright, br, beian]
+  layout: [social, copyright, br, beian]
   social:
     - icon: #fas fa-rss
       url:
+    - icon: fas fa-rss
+      url: /atom.xml
+    - icon: far fa-envelope
+      url: mailto:me@laoliang.ink
+    - icon: fab fa-github-alt
+      url: https://github.com/liangpengyv
+    - icon: fab fa-zhihu
+      url: https://www.zhihu.com/people/liangpengyv
+    - icon: fab fa-audible
+      url: https://juejin.cn/user/1327865773964376
     # or
     - img:
       url:
