@@ -44,7 +44,7 @@ navbar:
 
 ############################### Cover ############################### > start
 cover:
-  height_scheme: full # full, half
+  height_scheme: half # full, half
   layout_scheme: search # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
@@ -290,14 +290,18 @@ sidebar:
       url: /
       title: 老梁有墨
       subtitle:
-      jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
+      jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
         - icon: fas fa-rss
           url: /atom.xml
-        - icon: fas fa-envelope
+        - icon: far fa-envelope
           url: mailto:me@laoliang.ink
-        - icon: fab fa-github
+        - icon: fab fa-github-alt
           url: https://github.com/liangpengyv
+        - icon: fab fa-zhihu
+          url: https://www.zhihu.com/people/liangpengyv
+        - icon: fab fa-audible
+          url: https://juejin.cn/user/1327865773964376
 
     # ---------------------------------------
     # toc widget (valid only in articles)
