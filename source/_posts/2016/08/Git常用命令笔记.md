@@ -91,7 +91,7 @@ git branch -r #列出远端分支
 git branch -a #列出所有分支
 git branch -v #查看各个分支最后一个提交对象的信息
 git branch --merge #查看已经合并到当前分支的分支
-git branch --no-merge #查看未合并到当前分值的分支
+git branch --no-merge #查看未合并到当前分支的分支
 
 git branch test #新建 test 分支
 git checkout test #切换到 test 分支
