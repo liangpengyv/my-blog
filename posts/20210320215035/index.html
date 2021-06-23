@@ -19,7 +19,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>标签 - 老梁有墨</title>
+  <title>script元素脚本加载详解 - 老梁有墨</title>
+  
+    <meta name="keywords" content="无标签">
   
 
   
@@ -56,7 +58,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -277,7 +279,7 @@
     <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper tag search' style="display: ;">
+        <div id="full" class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -351,23 +353,284 @@
       <div class='body-wrapper' id="pjax-container">
         
 
-
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
+
+
+  
+  <div class="article-meta" id="top">
     
-      <div class='post-wrapper'>
-        <article id="tag" class="post article white-box reveal shadow">
-          <h2>标签</h2>
-          <div class="all-tags">
-            
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="tag">无标签</a><span class="tag-list-count">16</span></li></ul>
-          </div>
-          <br>
+    
+    
+      <h1 class="title">
+        script元素脚本加载详解
+      </h1>
+      <div class='new-meta-box'>
+        
           
-        </article>
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年3月20日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="script元素脚本加载详解" data-path="/posts/20210320215035/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
       </div>
     
+  </div>
+
+
   
+  <blockquote>
+<p>我们知道，将 JavaScript 插入 HTML 的主要方法是使用 <code>&lt;script&gt;</code> 元素。这个元素是由网景公司创造出来，并最早在 Netscape Navigator 2 中实现的。后来，这个元素被证实加入到 HTML 规范。</p>
+<p>为了更好地了解 JavaScript 在 HTML 中的加载情况，我们先简单介绍一些基础知识。</p>
+</blockquote>
+<p><code>&lt;script&gt;</code> 元素有下列 8 个属性：</p>
+<ul>
+<li><strong><code>async</code></strong> : 可选。表示应该立即开始下载脚本，但不能组织其他页面动作，比如下载资源或等待其他脚本加载。只对外部脚本文件有效。</li>
+<li><code>charset</code> : 可选。使用 <code>src</code> 属性指定的代码字符集。这个属性很少使用，因为大多数浏览器不在乎它的值。</li>
+<li><code>crossorigin</code> : 可选。配置相关请求 CORS（跨域资源共享）设置。默认不适用 CORS。crossorigin=”anonymous” 配置文件请求不必设置凭据标志。</li>
+<li><strong><code>defer</code></strong> : 可选。表示脚本可以延迟到文档完全被解析和显示之后再执行。只对外部脚本文件有效。在 IE7 及更早的版本中，对行内脚本也可以指定这个属性。</li>
+<li><code>integrity</code> : 可选。允许比对接收到和指定的加密签名以验证子资源完整性（SRI，Subresource Integrity）。如果接收到的资源的签名与这个属性指定的签名不匹配，则页面会报错，脚本不会执行。这个属性可以用于确保内容分发网络（CDN，Content Delivery Network）不会提供恶意内容。</li>
+<li><code>language</code> : 废弃。最初用于表示代码块中的脚本语言（如“JavaScript”、“JavaScript 1.2”或“VBScript”）。大多数浏览器都会忽略这个属性，不应该再使用它。</li>
+<li><strong><code>src</code></strong> : 可选。表示包含要执行的代码的外部文件。</li>
+<li><code>type</code> : 可选。代替 <code>language</code>，表示代码块中脚本语言的内容类型（也称 MIME 类型）。按照惯例，这个值始终都是 <code>text/javascript</code> ，尽管 <code>text/javascript</code> 和 <code>ecmascript</code> 都已经废弃了。JavaScript 文件的 MIME 类型通常是 <code>application/x-javascript</code> ，不过给 <code>type</code> 属性这个值有可能 <strong>导致脚本被忽略</strong>。在非 IE 的浏览器中有效的其他值还有 <code>application/javascript</code> 和 <code>application/ecmascript</code> 。如果这个是 <strong><code>module</code></strong> ，则代码会被当成 ES6 模块，而且只有这时候代码中才能出现 <strong><code>import</code></strong> 和 <strong><code>export</code></strong> 关键字。</li>
+</ul>
+<h2 id="外部-JavaScript-的加载与解释"><a href="#外部-JavaScript-的加载与解释" class="headerlink" title="外部 JavaScript 的加载与解释"></a>外部 JavaScript 的加载与解释</h2><p>使用 <code>src</code> 属性解析外部资源时，会向 <code>src</code> 属性指定的路径发送一个 GET 请求，以取得相应资源，假定是一个 JavaScript 文件。这个初始的请求不受浏览器同源策略限制，但返回并执行的 JavaScript 则受限制。当然，这个请求仍然受父页面 HTTP/HTTPS 协议的限制。</p>
+<p>默认状态下，浏览器会按照 <code>&lt;script&gt;</code> 在页面中出现的顺序依次解释它们，前提是它们没有使用 <code>defer</code> 和 <code>async</code> 属性。第二个 <code>&lt;script&gt;</code> 元素的代码必须在第一个 <code>&lt;script&gt;</code> 元素的代码解释完毕才能开始解释，第三个则必须等第二个解释完，以此类推。</p>
+<h2 id="标签位置"><a href="#标签位置" class="headerlink" title="标签位置"></a>标签位置</h2><p>过去，所有 <code>&lt;script</code> 元素都被放在页面的 <code>&lt;head&gt;</code> 标签内，如下面的例子所示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;example11.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;example12.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 这里是页面内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这种做法的主要目的是把外部的 CSS 和 JavaScript 文件都集中放到一起。不过，把所有 JavaScript 文件都放在 <code>&lt;head&gt;</code> 里，也就意味着必须把所有 JavaScript 代码都下载、解析和解释完成后，才能开始渲染页面（页面在浏览器解析到 <code>&lt;body&gt;</code> 的起始标签时开始渲染）。对于需要很多 JavaScript 的页面，这会导致页面渲染的明显延迟，在此期间浏览器窗口完全空白。未解决这个问题，现代 Web 应用程序通常将所有 JavaScript 引用放在 <code>&lt;body&gt;</code> 元素中的页面内容后面，如下面的例子所示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 这里是页面内容 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;example11.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;example12.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这样一来，页面会在处理 JavaScript 代码之前完全渲染页面。用户会感觉页面加载更快了，因为浏览器显示空白页面的时间短了。</p>
+<h2 id="推迟脚本执行（defer）"><a href="#推迟脚本执行（defer）" class="headerlink" title="推迟脚本执行（defer）"></a>推迟脚本执行（defer）</h2><p>HTML 4.01 为 <code>&lt;script&gt;</code> 元素定义了一个叫 <code>defer</code> 的属性。这个属性表示脚本在执行的时候不会改变页面的结构。也就是说，脚本会被延迟到整个页面都解析完毕后再运行。因此，在 <code>&lt;script&gt;</code> 元素上设置 <code>defer</code> 属性，相当于告诉浏览器立即下载，但延迟执行。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">defer</span> <span class="attr">src</span>=<span class="string">&quot;example11.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">defer</span> <span class="attr">src</span>=<span class="string">&quot;example12.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 这里是页面内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>虽然这个例子中的 <code>&lt;script&gt;</code> 元素包含在页面的 <code>&lt;head&gt;</code> 中，但它们会在浏览器解析到结束的 <code>&lt;/html&gt;</code> 标签后才会执行。HTML5 规范要求脚本应该按照它们出现的顺序执行，因此第一个推迟的脚本会在第二个推迟的脚本之前执行，而且两者会在 DOMContentLoaded 事件之前执行。不过在实际当中，推迟执行的脚本不一定总会按顺序执行或者在 DOMContentLoaded 事件之前执行，因此最好只包含一个这样的脚本。</p>
+<h2 id="异步执行脚本（async）"><a href="#异步执行脚本（async）" class="headerlink" title="异步执行脚本（async）"></a>异步执行脚本（async）</h2><p>HTML5 为 <code>&lt;script&gt;</code> 元素定义了 <code>async</code> 属性。从改变脚本处理方式上看，<code>async</code> 属性与 <code>defer</code> 类似。当然，它们两者也都只适用于外部脚本，都会告诉浏览器立即开始下载。不过，与 <code>defer</code> 不同的是，标记为 <code>async</code> 的脚本并不保证能按照它们出现的次序执行，比如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">&quot;example11.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">&quot;example12.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 这里是页面内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在这个例子中，第二个脚本可能先于第一个脚本执行。因此，重点在于它们之间没有依赖关系。给脚本添加 <code>async</code> 属性的目的是告诉浏览器，不必等脚本下载和执行完后再加载页面，同样也不必等到该一步脚本下载和执行后再加载其他脚本。正因为如此，异步脚本不应该在加载期间修改 DOM。</p>
+<p>异步脚本保证会在页面的 load 事件前执行，但可能会在 DOMContentLoaded 之后或之前。</p>
+<h2 id="脚本加载时机对比"><a href="#脚本加载时机对比" class="headerlink" title="脚本加载时机对比"></a>脚本加载时机对比</h2><p><img src="/posts/20210320215035/script%E8%84%9A%E6%9C%AC%E5%8A%A0%E8%BD%BD%E6%97%B6%E6%9C%BA.png" class="lazyload" data-srcset="/posts/20210320215035/script%E8%84%9A%E6%9C%AC%E5%8A%A0%E8%BD%BD%E6%97%B6%E6%9C%BA.png" srcset="data:image/png;base64,666" alt="script脚本加载时机"></p>
+<p>我们上一张图👆</p>
+<blockquote>
+<ul>
+<li><p>绿色 parser：指的是 HTML 引擎的解析，解析 HTML 文本的解析器</p>
+</li>
+<li><p>蓝色 fetch：代表的是获取脚本资源</p>
+</li>
+<li><p>红色 execution：代表的脚本的执行</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="默认情况下"><a href="#默认情况下" class="headerlink" title="默认情况下"></a>默认情况下</h3><p>默认情况下，脚本的加载和解析执行，会中断 HTML 文本的解析。</p>
+<p>这是由于，由于 JS 解析引擎 和 浏览器渲染引擎，是互斥的，JS 在解析执行过程中，GUI渲染线程会被挂起（渲染的当前状态会被保存）。当 JS 执行结束后，渲染线程才会继续。</p>
+<h3 id="使用-defer-属性时"><a href="#使用-defer-属性时" class="headerlink" title="使用 defer 属性时"></a>使用 defer 属性时</h3><p>使用 <code>defer</code> 属性，脚本的获取加载过程不会中断 HTML 文本的解析，而是通过异步的方式获取脚本。但是，此时脚本的解析执行，仍然要等到 HTML 文本的解析结束后。</p>
+<h3 id="使用-async-属性时"><a href="#使用-async-属性时" class="headerlink" title="使用 async 属性时"></a>使用 async 属性时</h3><p>使用 <code>async</code> 属性时，与 <code>defer</code> 相似的是，脚本的加载同样是异步的方式，不同的是，脚本的解析执行不依赖 HTML 文档的解析结束，脚本会在加载完成后立即解析执行，且这时候会中断 HTML 文本的解析。</p>
+<h3 id="针对-type-”module”-的加载执行"><a href="#针对-type-”module”-的加载执行" class="headerlink" title="针对 type=”module” 的加载执行"></a>针对 type=”module” 的加载执行</h3><p>上面的基础知识部分提到，使用 <code>type=&quot;module&quot;</code> 标记的 <code>&lt;script&gt;</code> 元素，代码会被当成 ES6 模块。</p>
+<p>这时候脚本的加载和执行逻辑默认和 <code>defer</code> 属性标记时的规则是一致的，当遇到 <code>&lt;script&gt;</code> 标签元素时，脚本会从模块入口异步开始加载，过程中可能会分叉去加载引用的其他脚本，最后回到入口模块，整个加载过程不会中断 HTML 文本的解析。而脚本的解析执行则像加了 <code>defer</code> 属性一样，需要等待 HTML 文本解析结束后才能开始。</p>
+<p>若 使用 <code>type=&quot;module&quot;</code> 时，同时使用 <code>async</code> 属性，那么脚本的解析执行会在加载完成后立即进行，且解析执行过程会中断 HTML 文本的解析。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们知道 <code>&lt;script&gt;</code> 标签是在网页中使用 JavaScript 的最根本的机制，所以，对这些加载时机和各种属性的理解，对我们将来做性能优化和提升脚本的安全性是非常重要的。</p>
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p><span style="display: inline-block; width: 100%; text-align: center;">如果您喜欢本站，可以请我喝杯咖啡支持一下</span></p>
+
+              
+            
+          </blockquote>
+        </div>
+      
+      
+        <div class='donate'>
+          <div class='imgs'>
+            
+              <img src='/assets/img/config/donate-wechat-pay.png'>
+            
+              <img src='/assets/img/config/donate-ali-pay.jpeg'>
+            
+          </div>
+        </div>
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-23T23:53:13+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年6月23日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>无标签</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.laoliang.ink/posts/20210320215035/&title=script元素脚本加载详解 - 老梁有墨&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.laoliang.ink/posts/20210320215035/&title=script元素脚本加载详解 - 老梁有墨&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.laoliang.ink/posts/20210320215035/&title=script元素脚本加载详解 - 老梁有墨&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" srcset="data:image/png;base64,666"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAEYCAAAAACi5bZQAAAC7ElEQVR42u3aQVLEMAwEwPz/0/AAqIpH0mZX0L6xJI7VuUxJub6sX9eFAAwYMGDAgFkDcxXXjw2L/68+9/Q58b5gwIABAwYMmHUwxwHo5vop4BR2qh4wYMCAAQMGzF6YNFilgW0q8B0XmtYDBgwYMGDAgPl3MKeBrduIOg2CYMCAAQMGDBgw1YAXN4iK55jaBwwYMGDAgAGzH2aqoDR4pfdXB4KPTSLBgAEDBgwYMI/BVD/4+dS/y/WAAQMGDBgwYNbAdFd1UJZeV/2QKK4HDBgwYMCAAbMGphqQ0kZRdxA2HfDAgAEDBgwYMH8H5u4g6cCsCjn1AlIwMGDAgAEDBsw+mG5j6qmGVfc5x9eDAQMGDBgwYNbAVBs73fueGrSNNarAgAEDBgwYMB8L020gTV2fFjp+PRgwYMCAAQNmLUz3wFPBbWq/NPCBAQMGDBgwYPbCTDWO7n5PYU+DZLdhBgYMGDBgwIDZB3N6sOOgVAQ5DWanMHEQBQMGDBgwYMCsg0kP1m0QTQXBFOx2PzBgwIABAwbMGpjq4C0FeGpw1g2CYMCAAQMGDJg9MK8+QBrMqh8mpYGy3cEDAwYMGDBgwLwdpnrw2weEkO8OfmDAgAEDBgyY/TDVhk+1YTU1iEv3jwMeGDBgwIABA+bjYNKglA7g0gHeq4Lc8TnAgAEDBgwYMOthqgfpFtINlNXgCgYMGDBgwID5OzCvPkj1haQvLh4UggEDBgwYMGDWw6QNpvT+09/T/dqNKzBgwIABAwbMGpjuqhY4NTibggQDBgwYMGDA7IO5iqvaYKruc1xYN5CCAQMGDBgwYNbBTAW6bjA7big1B3HHAQ8MGDBgwIABswamG6C6Ae+pgRsYMGDAgAEDBky3YTT2wU8xGIIBAwYMGDBgwKSNo6eCXfwcMGDAgAEDBsxamHTgVi0kBUlfwNs/HAIDBgwYMGDAPAbTHVxVB2pThVYbZWDAgAEDBgyYvTAWGDBgwIABA2bZ+gbl4Ofh7dkikgAAAABJRU5ErkJggg==">
+          </div>
+        </div>
+      
+    
+      
+        <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer noopener"
+          
+            target="_blank" href="https://t.me/share/url?url=https://www.laoliang.ink/posts/20210320215035/&text=script元素脚本加载详解 - 老梁有墨"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/posts/20210313223731/'>
+          <p class='title'>一种适合小团队的Git协作流程<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
+团队开发中，遵循一个合理、清晰的Git使用流程，是非常重要的
+否则，每个人都提交一堆杂乱无章的commit，项目很快就会变得难以协调和维护
+
+分支介绍
+master - 主分支
+所有提供给用户...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -375,247 +638,28 @@
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle' href='/clock.html'>
-          <img no-lazy src='/assets/img/config/logo-large.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>老梁有墨</h2>
-        
-        
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@laoliang.ink"
-              class="social far fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/liangpengyv"
-              class="social fab fa-github-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://www.zhihu.com/people/liangpengyv"
-              class="social fab fa-zhihu flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://juejin.cn/user/1327865773964376"
-              class="social fab fa-audible flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
-    
-
-<section class="widget qrcode shadow desktop mobile">
-  
-
-  <div class='content article-entry'>
-    
-      <img src='/assets/img/config/wechat-account.png'
-      />
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget shadow desktop mobile">
-  
   <header>
     
-      <i class="fas fa-award fa-fw" aria-hidden="true"></i><span class='name'>站点信息</span>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
-  <div class='content'>
-    <div class="webinfo">
-      
-        <div class="webinfo-item">
-          <div>文章数目：</div>
-          <div>16 篇</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>已运行时间：</div>
-          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
-        </div>
-        <script>
-          var BirthDay = new Date(new Date('2015/09/06'));
-          var today = new Date();
-          var timeold = (today.getTime() - BirthDay.getTime());
-          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
-          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
-        </script>
-      
-
-
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站访客数：</div>
-          
-          <div><span id="lc-uv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 人</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站总访问量：</div>
-          
-          <div><span id="lc-sv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 次</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>最后活动时间：</div>
-          
-            <div id="last-update" style="display: none;">Wed Jun 23 2021 23:53:30 GMT+0800 (中国标准时间)</div>
-            <div id="last-update-show">2021-06-23 日</div>
-          
-        </div>
-        
-        <script>
-          function timeago(dateTimeStamp) {
-              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
-              var hour = minute * 60;
-              var day = hour * 24;
-              var week = day * 7;
-              var month = day * 30;
-              var now = new Date().getTime(); //获取当前时间毫秒
-              var diffValue = now - dateTimeStamp; //时间差
-              if (diffValue < 0) {
-                  return;
-              }
-              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
-              var hourC = diffValue / hour;
-              var dayC = diffValue / day;
-              var weekC = diffValue / week;
-              var monthC = diffValue / month;
-              if (monthC >= 1 && monthC <= 3) {
-                  result = " " + parseInt(monthC) + " 月前"
-              } else if (weekC >= 1 && weekC <= 3) {
-                  result = " " + parseInt(weekC) + " 周前"
-              } else if (dayC >= 1 && dayC <= 6) {
-                  result = " " + parseInt(dayC) + " 天前"
-              } else if (hourC >= 1 && hourC <= 23) {
-                  result = " " + parseInt(hourC) + " 小时前"
-              } else if (minC >= 1 && minC <= 59) {
-                  result = " " + parseInt(minC) + " 分钟前"
-              } else if (diffValue >= 0 && diffValue <= minute) {
-                  result = "刚刚"
-              } else {
-                  var datetime = new Date();
-                  datetime.setTime(dateTimeStamp);
-                  var Nyear = datetime.getFullYear();
-                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
-                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
-                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
-                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
-                  result = Nyear + "-" + Nmonth + "-" + Ndate
-              }
-              return result;
-          }
-          var lastUpDate = document.getElementById('last-update').innerHTML;
-          try {
-            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
-          } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2021-06-23 日';
-          }
-        </script>
-        
-      
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E9%83%A8-JavaScript-%E7%9A%84%E5%8A%A0%E8%BD%BD%E4%B8%8E%E8%A7%A3%E9%87%8A"><span class="toc-text">外部 JavaScript 的加载与解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E4%BD%8D%E7%BD%AE"><span class="toc-text">标签位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E8%BF%9F%E8%84%9A%E6%9C%AC%E6%89%A7%E8%A1%8C%EF%BC%88defer%EF%BC%89"><span class="toc-text">推迟脚本执行（defer）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC%EF%BC%88async%EF%BC%89"><span class="toc-text">异步执行脚本（async）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E5%8A%A0%E8%BD%BD%E6%97%B6%E6%9C%BA%E5%AF%B9%E6%AF%94"><span class="toc-text">脚本加载时机对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E6%83%85%E5%86%B5%E4%B8%8B"><span class="toc-text">默认情况下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-defer-%E5%B1%9E%E6%80%A7%E6%97%B6"><span class="toc-text">使用 defer 属性时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-async-%E5%B1%9E%E6%80%A7%E6%97%B6"><span class="toc-text">使用 async 属性时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9-type-%E2%80%9Dmodule%E2%80%9D-%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%89%A7%E8%A1%8C"><span class="toc-text">针对 type&#x3D;”module” 的加载执行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
     </div>
-  </div>
-</section>
+  </section>
 
-  
-
-  
-    
-    
-
-<section class="widget text shadow desktop mobile">
-  
-  <header>
-    
-      <i class="fas fa-donate fa-fw" aria-hidden="true"></i><span class='name'>捐赠</span>
-    
-  </header>
-
-
-  <div class='content'>
-    
-      <p>如果您喜欢本站，可以请我喝杯咖啡支持一下</p>
-
-    
-      <p><img src="/assets/img/config/donate-wechat-pay.png" class="lazyload" data-srcset="/assets/img/config/donate-wechat-pay.png" srcset="data:image/png;base64,666" width="50%"><img src="/assets/img/config/donate-ali-pay.jpeg" class="lazyload" data-srcset="/assets/img/config/donate-ali-pay.jpeg" srcset="data:image/png;base64,666" width="50%"></p>
-
-    
-  </div>
-</section>
 
   
 
 
 </aside>
+
 
 
         
@@ -625,14 +669,14 @@
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="script元素脚本加载详解";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
