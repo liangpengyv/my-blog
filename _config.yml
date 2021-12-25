@@ -116,10 +116,5 @@ theme: volantis
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: 
-    github: 
-      url: https://github.com/liangpengyv/my-blog.git
-      branch: gh-pages
-    coding: 
-      url: https://e.coding.net/laoliangink/my-blog/my-blog.git
-      branch: coding-pages
+  repo: https://github.com/liangpengyv/my-blog.git
+  branch: gh-pages
