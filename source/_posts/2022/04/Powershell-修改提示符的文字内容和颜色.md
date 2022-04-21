@@ -13,7 +13,7 @@ date: 2022-04-22 00:08:13
 echo $Profile
 ```
 
-得到形如下方的绝对路径，表示当前用户的 ps1 默认加载位置
+得到形如下方的绝对路径，表示当前用户 ps1 配置文件默认加载位置
 
 ```
 C:\Users\liang\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
