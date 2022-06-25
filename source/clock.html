@@ -59,6 +59,8 @@
 <script>
     function handleDay(day) {
         switch (day) {
+            case 0:
+                return '日'
             case 1:
                 return '一'
             case 2:
@@ -71,8 +73,6 @@
                 return '五'
             case 6:
                 return '六'
-            case 7:
-                return '日'
         }
     }
 
@@ -104,10 +104,14 @@
         secondsElement.innerText = ':' + formatDoubleDigit(currentDate.getSeconds())
     }
 
-    updateDate()
-    setInterval(() => {
+    function refreshDate() {
         updateDate()
-    }, 1000);
+        setTimeout(() => {
+            refreshDate()
+        }, 1000);
+    }
+
+    refreshDate()
 </script>
 
 </html>
