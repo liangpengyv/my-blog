@@ -7,7 +7,7 @@ tags:
 date: 2022-04-22 00:08:13
 ---
 
-### 查看当前用户 ps1 文件位置
+## 查看当前用户 ps1 文件位置
 
 ```
 echo $Profile
@@ -19,7 +19,7 @@ echo $Profile
 C:\Users\liang\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 ```
 
-### 编辑 ps1 配置文件
+## 编辑 ps1 配置文件
 
 编辑这个 ps1 配置文件，可以改变 PowerShell 初始化时的一些行为
 
@@ -45,7 +45,7 @@ function prompt
 }
 ```
 
-### 使自定义配置文件生效
+## 使自定义配置文件生效
 
 一种方式是：
 
@@ -59,7 +59,6 @@ function prompt
 . $Profile
 ```
 
-
-### 最终效果
+## 最终效果
 
 ![PowerShell自定义提示符](./Powershell-修改提示符的文字内容和颜色/PowerShell自定义提示符.png)
