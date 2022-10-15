@@ -15,31 +15,31 @@
 
 全局安装 hexo
 
-```
+```shell
 npm install -g hexo-cli
 ```
 
 清除缓存文件 (db.json) 和已生成的静态文件 (public)
 
-```
+```shell
 hexo clean
 ```
 
 生成静态文件
 
-```
+```shell
 hexo generate
 ```
 
 启动本地服务器预览（默认情况下，访问网址为： http://localhost:4000/）
 
-```
+```shell
 hexo server
 ```
 
 部署网站
 
-```
+```shell
 hexo deploy
 ```
 
@@ -47,7 +47,6 @@ hexo deploy
 
 新建一篇文章
 
-```
+```shell
 hexo new "文章标题"
 ```
-
