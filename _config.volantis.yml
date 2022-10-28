@@ -292,16 +292,16 @@ sidebar:
       subtitle:
       jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
-        - icon: fas fa-rss
+        - icon: fa-solid fa-square-rss
           url: /atom.xml
-        - icon: far fa-envelope
+        - icon: fa-regular fa-envelope
           url: mailto:me@laoliang.ink
-        - icon: fab fa-github-alt
+        - icon: fa-brands fa-github-alt
           url: https://github.com/liangpengyv
-        - icon: fab fa-zhihu
+        - icon: fa-brands fa-zhihu
           url: https://www.zhihu.com/people/liangpengyv
-        - icon: fab fa-audible
-          url: https://juejin.cn/user/1327865773964376
+        - icon: fa-brands fa-bilibili
+          url: https://space.bilibili.com/222021151
 
     # ---------------------------------------
     # toc widget (valid only in articles)
@@ -418,18 +418,16 @@ site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
   layout: [social, copyright, br, beian]
   social:
-    - icon: #fas fa-rss
-      url:
-    - icon: fas fa-rss
+    - icon: fa-solid fa-square-rss
       url: /atom.xml
-    - icon: far fa-envelope
+    - icon: fa-regular fa-envelope
       url: mailto:me@laoliang.ink
-    - icon: fab fa-github-alt
+    - icon: fa-brands fa-github-alt
       url: https://github.com/liangpengyv
-    - icon: fab fa-zhihu
+    - icon: fa-brands fa-zhihu
       url: https://www.zhihu.com/people/liangpengyv
-    - icon: fab fa-audible
-      url: https://juejin.cn/user/1327865773964376
+    - icon: fa-brands fa-bilibili
+      url: https://space.bilibili.com/222021151
     # or
     - img:
       url:
@@ -455,7 +453,7 @@ plugins:
   # jquery
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
   # fontawesome
-  fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css
+  fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css
   ################ optional plugins ################
 
   ######## Plugins to improve loading speed:
