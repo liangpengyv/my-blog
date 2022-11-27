@@ -3,9 +3,9 @@ layout: docs
 seo_title: 读书
 bottom_meta: false
 cover: true
-sidebar: [blogger, qrcode, webinfo, donate]
+sidebar: [blogger, qrcode, donate, webinfo]
 valine:
-  placeholder: 有什么书想对我推荐的呢？
+  placeholder: 有什么书想对我推荐呢？
 ---
 
 {% tabs book-by-douban %}
@@ -522,7 +522,7 @@ valine:
   </div>
 </div>
 <!-- endtab -->
-<!-- tab 已读（110） -->
+<!-- tab 读过（110） -->
 <div id="hexo-douban-item3">
   <div class="hexo-douban-item">
     <div class="hexo-douban-picture"><img src="https://img1.doubanio.com/view/subject/s/public/s33297137.jpg"
@@ -1853,11 +1853,19 @@ valine:
 {% endtabs %}
 
 <style>
-  #book-by-douban a {
+  #book-by-douban .nav-tabs .tab a {
     font-size: 0.9rem;
-    color: #2196f3;
+    line-height: 1.4rem;
+    color: #41ac91;
+    transition: all 0.28s ease;
   }
-
+  #book-by-douban .nav-tabs .active a {
+    font-size: 0.9375rem;
+    color: #44d7b6;
+  }
+  #book-by-douban .nav-tabs .tab a:hover {
+    color: #ff5722;
+  }
   .hexo-douban-tabs {
     margin-bottom: 15px;
     margin-top: 15px;

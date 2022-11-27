@@ -20,9 +20,12 @@ navbar:
   visiable: auto # always, auto
   logo: # choose [img] or [icon + title]
     img: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
-    icon: fas fa-home
+    icon: # fas fa-home
     title: 老梁有墨
   menu:
+    - name: 首页
+      icon: fas fa-home
+      url: /
     # - name: 分类
     #   icon: fas fa-folder-open
     #   url: categories/
@@ -56,6 +59,9 @@ cover:
   subtitle: ''
   search: Search... # search bar placeholder
   features:
+    - name: 首页
+      icon: fas fa-home
+      url: /
     # - name: 分类
     #   icon: fas fa-folder-open
     #   img: # https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg
@@ -275,7 +281,7 @@ comments:
 ############################### Sidebar ############################### > start
 sidebar:
   # 主页、分类、归档等独立页面
-  for_page: [blogger, qrcode, webinfo, donate]
+  for_page: [blogger, qrcode, donate, webinfo]
   # layout: docs/post 这类文章页面
   for_post: [toc]
   # 侧边栏组件库
@@ -390,7 +396,7 @@ sidebar:
         title: 捐赠
         url: #
       content:
-        - '如果您喜欢本站，可以请我喝杯咖啡支持一下'
+        - '喜欢我，请我吃个蛋😉'
         - '<img src="/assets/img/config/donate-wechat-pay.png" width="50%"><img src="/assets/img/config/donate-ali-pay.jpeg" width="50%">'
 ############################### Sidebar ############################### > end
 
