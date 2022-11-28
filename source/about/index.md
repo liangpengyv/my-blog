@@ -22,6 +22,6 @@ valine:
 喜欢守着工具箱，搞搞小制作🛠️
 
 **🧐长大了**
-喜欢守在电脑前，敲下 ABC🔤
+喜欢守在电脑前，敲着 printf("Hello world")🔤
 
 </center>
