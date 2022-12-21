@@ -9,8 +9,20 @@ valine:
 ---
 
 {% tabs book-by-douban %}
-<!-- tab 读过（110） -->
+<!-- tab 读过（111） -->
 <div id="hexo-douban-item3">
+  <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="https://img2.doubanio.com/view/subject/s/public/s33819323.jpg"
+        class="lazyload" data-srcset="https://img2.doubanio.com/view/subject/s/public/s33819323.jpg"
+        srcset="data:image/png;base64,666" loading="lazy" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+      <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/35349296/">
+          XMind：用好思维导图走上开挂人生</a></div>
+      <div class="hexo-douban-meta">XMind团队 / 电子工业出版社</div>
+      <div class="hexo-douban-meta">2022-12-21</div>
+      <div class="hexo-douban-comments"></div>
+    </div>
+  </div>
   <div class="hexo-douban-item">
     <div class="hexo-douban-picture"><img src="https://img1.doubanio.com/view/subject/s/public/s33297137.jpg"
         class="lazyload" data-srcset="https://img1.doubanio.com/view/subject/s/public/s33297137.jpg"
@@ -1337,8 +1349,20 @@ valine:
   </div>
 </div>
 <!-- endtab -->
-<!-- tab 在读（6） -->
+<!-- tab 在读（7） -->
 <div id="hexo-douban-item1">
+  <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="https://img1.doubanio.com/view/subject/s/public/s33956867.jpg"
+        class="lazyload" data-srcset="https://img1.doubanio.com/view/subject/s/public/s33956867.jpg"
+        srcset="data:image/png;base64,666" loading="lazy" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+      <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/35546622/">
+          置身事内</a></div>
+      <div class="hexo-douban-meta">兰小欢 / 上海人民出版社 / 世纪文景</div>
+      <div class="hexo-douban-meta">2022-12-21</div>
+      <div class="hexo-douban-comments"></div>
+    </div>
+  </div>
   <div class="hexo-douban-item">
     <div class="hexo-douban-picture"><img src="https://img2.doubanio.com/view/subject/s/public/s27283822.jpg"
         class="lazyload" data-srcset="https://img2.doubanio.com/view/subject/s/public/s27283822.jpg"
