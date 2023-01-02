@@ -5,10 +5,6 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="noindex,follow">
-      
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -23,7 +19,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>老梁有墨</title>
+  <title>macOS - 给 Terminal(终端)配置网络代理 - 老梁有墨</title>
+  
+    <meta name="keywords" content="无标签">
   
 
   
@@ -247,7 +245,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  search' style="display: none;">
+        <div id="full" class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -315,520 +313,227 @@
         
 
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
-  <section class="post-list">
+
+
+  
+  <div class="article-meta" id="top">
     
     
-      
+    
+      <h1 class="title">
+        macOS - 给 Terminal(终端)配置网络代理
+      </h1>
+      <div class='new-meta-box'>
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/posts/20171023184559/">
-        多元思维模型
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-查理芒格认为，现实世界的种种问题，很少是正好落在某一个学科的界限里面的，而往往是横跨多个学科的。但是我们传统的教育又是以学科和专业划界来培养人才。你是哪个专业的，你就只了解这个专业的知识，对别的学科知识一窍不通。一个心理学专业的人，一般不会懂经济学，而一个经济学专业的人，一般也不会懂心理学。但是当你在现实世界中要解决问题的时候，就发现这种狭窄的知识结构很成问题。
-多元思维模型帮助你正确进行...
-      
-    
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+
+
+          
         
-        <time>2017-10-23</time>
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2023年1月2日</p>
+  </a>
+</div>
+
+          
         
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a>
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="macOS - 给 Terminal(终端)配置网络代理" data-path="/posts/20230102172153/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <blockquote>
+<p>与浏览器不同，mac 的终端默认并没有开启代理模式，也就是说即使我们电脑安装了 SS/V2ray 等代理客户端，在终端中也是无法科学上网的。下面通过样例演示如何对终端配置网络代理。</p>
+</blockquote>
+<h2 id="1-确定客户端端口"><a href="#1-确定客户端端口" class="headerlink" title="1. 确定客户端端口"></a>1. 确定客户端端口</h2><p>首先我们打开使用的代理客户端设置界面，查看其开放的 HTTP 端口，比如我这里是 1087</p>
+<p><img src="/posts/20230102172153/%E7%9B%91%E5%90%AC%E7%AB%AF%E5%8F%A3.png" class="lazyload" data-srcset="/posts/20230102172153/%E7%9B%91%E5%90%AC%E7%AB%AF%E5%8F%A3.png" srcset="data:image/png;base64,666" alt="监听端口"></p>
+<h2 id="2-配置代理"><a href="#2-配置代理" class="headerlink" title="2. 配置代理"></a>2. 配置代理</h2><p>macOS Catalina 之后，Mac 使用 zsh 作为默认的 Shell 终端，我们这里就以 zsh 配置为例展示配置方法。</p>
+<p>修改 <code>~/.zshrc</code> 配置文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>向其中添加如下内容：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Turn on and off all_proxy</span></span><br><span class="line"><span class="built_in">alias</span> proxy=<span class="string">&quot;export all_proxy=http://127.0.0.1:1087 &amp;&amp; echo &#x27;Already turn on all_proxy to http://127.0.0.1:1087&#x27;&quot;</span></span><br><span class="line"><span class="built_in">alias</span> unproxy=<span class="string">&quot;unset all_proxy &amp;&amp; echo &#x27;Already turn off all_proxy&#x27;&quot;</span></span><br></pre></td></tr></table></figure>
+<p>保存退出 vim 后，执行如下命令，使配置生效</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<h2 id="3-测试"><a href="#3-测试" class="headerlink" title="3. 测试"></a>3. 测试</h2><p>首先我们使用 curl 命令查看终端目前的 IP：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl ipinfo.io</span><br></pre></td></tr></table></figure>
+<p>得到类似下面的结果，可以看出确实使用的是国内的 IP 地址：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;ip&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;region&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Guangdong&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;country&quot;</span><span class="punctuation">:</span> <span class="string">&quot;CN&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;timezone&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Asia/Shanghai&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>接着我们执行 <code>proxy</code> 命令开启终端代理模式（仅针对当前会话生效）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxy</span><br></pre></td></tr></table></figure>
+<p>再次使用 curl 命令查看可以发现变成了国外的 IP（代理服务器的 IP）：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;ip&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;region&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Tokyo&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;country&quot;</span><span class="punctuation">:</span> <span class="string">&quot;JP&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;timezone&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Asia/Tokyo&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>如果需要关闭代理模式，执行如下命令即可：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unproxy</span><br></pre></td></tr></table></figure>
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/posts/20171023184559/'>
-            阅读全文
-          </a>
-        </div>
+      
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2023-01-02T17:50:18+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2023年1月2日</p>
+  </a>
 </div>
 
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>无标签</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.laoliang.ink/posts/20230102172153/&title=macOS - 给 Terminal(终端)配置网络代理 - 老梁有墨&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.laoliang.ink/posts/20230102172153/&title=macOS - 给 Terminal(终端)配置网络代理 - 老梁有墨&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.laoliang.ink/posts/20230102172153/&title=macOS - 给 Terminal(终端)配置网络代理 - 老梁有墨&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" srcset="data:image/png;base64,666"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAEYCAAAAACi5bZQAAADB0lEQVR42u3aSVbEMAwFwNz/0nAB+kWTIQrlHUOr5Vr9J/n6cn48FwIwYMCAAQNmDcxVPHefv20gWP/u89m6t/cBAwYMGDBgwKyDCQegm4Y+NZitHwX79L3V+4ABAwYMGDBg9sJEA90UXLePqTpgwIABAwYMmP8HM3Wh7N+n+wEDBgwYMGDA/F+YaJ3ohbMDLTBgwIABAwYMmPSCaigQdh8iPW4TCQYMGDBgwID5NZjs6V789M/l+4ABAwYMGDBg1sB0T3bwdDVPdDFXvg8YMGDAgAEDZg3MXeFugMrWi0Ie6wcMGDBgwIABsxYmW/hUcKs+EMo+NAoHPDBgwIABAwbM42CyA6nqYKoa9LJ1uw+KwIABAwYMGDB7YarBKwsQ/b5u/bFNJBgwYMCAAQPmcTDdgVQXoLvYm/p/MGDAgAEDBsz7YKYfAkUXddkAODWwAgMGDBgwYMDsgckWqA6UskGwClp9sAQGDBgwYMCA2QvTDVjRoFYOXsUFYDpwggEDBgwYMGDWwGQXaNHBVXZxF603tei7DXhgwIABAwYMmDUw2QFVNFhVB0unF3vhgAcGDBgwYMCAeTxMd8HWvVA16GW/tz2oAgMGDBgwYMA8BqY6SOperPoQKLsozD6QAgMGDBgwYMDsgekuxk4Ntk7Dfvw9GDBgwIABA2YdTDeYTUGeWriFvwcMGDBgwIABswYmPcgZWsx1H/xM9QUGDBgwYMCAeR9MtZHsxbIDpemFHRgwYMCAAQNmL8zYoqo4gMr2UQ2S4X7BgAEDBgwYMGtguic9CCoGserCLRtMwYABAwYMGDB7YK7imR5gZYNYdqB2bFAFBgwYMGDAgPlzmGqg6z40qg6yqv3c1gMDBgwYMGDArIWZCnTdwdLphVs64IEBAwYMGDBgXgcTDU5ZiFPBMb1wAwMGDBgwYMC8Hmbq/7KDpWowBAMGDBgwYMC8D2Zq4ZYdVE1/Lts3GDBgwIABA2YvTHVx1R00VRdp6QtH+wIDBgwYMGDArIFxPgQ8BwwYMGDAgHnq+QbPVqY/LeEi/wAAAABJRU5ErkJggg==">
           </div>
-        
+        </div>
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/posts/20161126103127/">
-        SQL子查询总结：相关子查询与非相关子查询有什么区别
-      </a>
-    </h2>
-  
-  <div class='md'>
     
       
-        
-如果一个select语句能够返回单个值或者一列值，且该select语句嵌套在另一个SQL语句（例如select语句、insert语句、update语句或者delete语句）中，那么该select语句成为“子查询”（也叫内层查询），包含子查询的SQL语句称为“主查询”（也叫外层查询）。为了标记子查询与主查询之间的关系，通常将子查询写在小括号内。子查询一般用在主查询的where子句或havin...
+        <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer noopener"
+          
+            target="_blank" href="https://t.me/share/url?url=https://www.laoliang.ink/posts/20230102172153/&text=macOS - 给 Terminal(终端)配置网络代理 - 老梁有墨"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" srcset="data:image/png;base64,666">
+          
+        </a>
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2016-11-26</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/posts/20161126103127/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
+
+
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/posts/20161125205723/">
-        理解Java中的向上转型
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        “为新的类提供方法”并不是继承技术中最重要的方面，其最重要的方面是用来表现新类和基类之间的关系。这种关系可以用“新类是现有类的一种类型”这句话加以概括。
-这个描述并非只是一种解释继承的华丽的方式，这直接是由语言所支撑的。例如，假设有一个Instrument的代表乐器的基类和一个称谓Wind的导出类。由于继承可以确保基类中所有的方法在导出类中也同样有效，所以能够向基类发送的所有信息同样也可以向...
-      
-    
+    </div>
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2016-11-25</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/posts/20161125205723/'>
-            阅读全文
-          </a>
-        </div>
+      
+        <a class='next' href='/posts/20220422181821/'>
+          <p class='title'>在 PowerShell 中使用 Git<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>前言在 macOS 下 git 命令行工具默认有着很好的 tab 补全功能，而在 Windows 下通过 exe 安装的 git 程序，看起来就有些简陋。
+其自带的 Unix Shell 环境模...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/posts/20161118161622/">
-        Java赋值操作符注意事项及方法调用中的别名问题
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        让我们先来回顾一下Java中的一些特性 ~~
-一切都是对象“如果我们说另一种不同的语言，那么我们就会发觉一个有些不同的世界。”——Luduing Wittgerstein(1889-1951)
-尽管Java是基于C++的，但是相比之下，Java是一种更“纯粹”的面向对象程序设计语言。
-Java语言假设我们只是进行面向对象的程序设计。也就是说，在开始用Java进行设计之前，必须将思想转化到面向...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2016-11-18</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/posts/20161118161622/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/posts/20161008082313/">
-        实验——48小时丢手机之随手记
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-受一篇文章启发，我也尝试进行了这样一场“48小时彻底离开手机和网络”的实验。下面是我在这个过程中随手记下的感受。
-在这48小时中，我主要做了些：
-
-阅读完王小波的一本杂文集——《我的精神家园》
-阅读完图灵系列期刊——码农.第2期——Javascript
-阅读了《Thinging in Java》的第一章
-阅读了《Pro Git》的第七章
-完成毛概的小作业+复习了微机原理的功课
-市中逛街购买...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2016-10-08</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/posts/20161008082313/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/posts/20160910114617/">
-        Markdown简明手册
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML(或者HTML)文档”。这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。
-John Gruber 在 2004 年创造了 Markdown 语言，在语法上有很大一部分是跟亚伦·斯沃茨（Aaron Swartz）共同合作的。这个语...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2016-09-10</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/posts/20160910114617/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/posts/20160804131048/">
-        Git常用命令笔记
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        注：本文引自图灵社区系列杂志《码农·进击的Java（总第16期）》，部分有删减，仅用于个人备忘笔记及交流使用
-
-作者/颜海镜
+  </article>
 
 
-90后一枚，活跃在各个技术社区，常以歪脖无脸男作为头像，专注于 Web 前端开发已有三个年头，关注 HTML/CSS/JavaScript 等技术，目前就职于北京金山软件，坚信 Web 赢在未来。热爱思考，热爱开源分享，常翻译些外文博客，此外还爱好读书，羽毛球，乒...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2016-08-04</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/posts/20160804131048/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/posts/20160803131048/">
-        Git快速入门（三）
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        现在的你对于 Git 应该完全不会感到陌生了吧，通过之前两节内容的学习，你已经掌握了很多 Git 中常用的命令，像提交代码这种简单的操作相信肯定是难不倒你的。
-那么打开 Git Bash，在指定目录创建项目的跟目录，然后执行提交操作：
-123git initgit add .git commit -m &quot;First Commit.&quot;
-这样就将准备工作完成了，下面就让我们开...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2016-08-03</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/posts/20160803131048/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/posts/20160802131048/">
-        Git快速入门（二）
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        上一次我们介绍了 Git 的环境配置和创建本地版本库本节我们一起来看 Git 的更多使用技巧。
-忽略文件为什么要忽略文件呢，版本控制工具的初衷之一就是为了能够更多人更好地合作，方便多人维护同一份代码，那么对于常见的程序源代码，我们往往并不是需要把项目目录下所有的文件都加入到版本控制当中，例如，项目构建过程中生成的文件、本地IDE配置文件等，那么如何才能实现这样的效果呢？
-Git 提供了一种可...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2016-08-02</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/posts/20160802131048/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/posts/20160801131048/">
-        Git快速入门（一）
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        为什么要写此系列教程我是一个有着严重拖延的人，对于新鲜事物很感兴趣，但是执行力很差。编辑此篇教程既是对自己学习新工具的总结，更是对自己办事执行力上的考验。
-好，下面我们进入正题。
-关于版本控制什么是 “版本控制”？我为什么要关心它呢？ 版本控制是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。 在本书所展示的例子中，我们对保存着软件源代码的文件作版本控制，但实际上，你可以...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2016-08-01</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/posts/20160801131048/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          2 / 2
-        </p>
-        
-      </div>
-    
-  
 
 
 </div>
@@ -838,242 +543,22 @@ Git 提供了一种可...
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle' href='/clock.html'>
-          <img no-lazy src='/assets/img/config/logo-large.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>老梁有墨</h2>
-        
-        
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fa-solid fa-square-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@laoliang.ink"
-              class="social fa-regular fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/liangpengyv"
-              class="social fa-brands fa-github-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://www.zhihu.com/people/liangpengyv"
-              class="social fa-brands fa-zhihu flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://space.bilibili.com/222021151"
-              class="social fa-brands fa-bilibili flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
-    
-
-<section class="widget qrcode shadow desktop mobile">
-  
-
-  <div class='content article-entry'>
-    
-      <img src='/assets/img/config/wechat-account.png'
-      />
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget text shadow desktop mobile">
-  
   <header>
     
-      <i class="fas fa-donate fa-fw" aria-hidden="true"></i><span class='name'>捐赠</span>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
-  <div class='content'>
-    
-      <p>喜欢我，请我吃个蛋😉</p>
-
-    
-      <p><img src="/assets/img/config/donate-wechat-pay.png" class="lazyload" data-srcset="/assets/img/config/donate-wechat-pay.png" srcset="data:image/png;base64,666" width="50%"><img src="/assets/img/config/donate-ali-pay.jpeg" class="lazyload" data-srcset="/assets/img/config/donate-ali-pay.jpeg" srcset="data:image/png;base64,666" width="50%"></p>
-
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget shadow desktop mobile">
-  
-  <header>
-    
-      <i class="fas fa-award fa-fw" aria-hidden="true"></i><span class='name'>站点信息</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="webinfo">
-      
-        <div class="webinfo-item">
-          <div>文章数目：</div>
-          <div>20 篇</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>已运行时间：</div>
-          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
-        </div>
-        <script>
-          var BirthDay = new Date(new Date('2015/09/06'));
-          var today = new Date();
-          var timeold = (today.getTime() - BirthDay.getTime());
-          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
-          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
-        </script>
-      
-
-
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站访客数：</div>
-          
-          <div><span id="lc-uv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 人</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站总访问量：</div>
-          
-          <div><span id="lc-sv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 次</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>最后活动时间：</div>
-          
-            <div id="last-update" style="display: none;">Mon Jan 02 2023 17:51:04 GMT+0800 (中国标准时间)</div>
-            <div id="last-update-show">2023-01-02 日</div>
-          
-        </div>
-        
-        <script>
-          function timeago(dateTimeStamp) {
-              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
-              var hour = minute * 60;
-              var day = hour * 24;
-              var week = day * 7;
-              var month = day * 30;
-              var now = new Date().getTime(); //获取当前时间毫秒
-              var diffValue = now - dateTimeStamp; //时间差
-              if (diffValue < 0) {
-                  return;
-              }
-              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
-              var hourC = diffValue / hour;
-              var dayC = diffValue / day;
-              var weekC = diffValue / week;
-              var monthC = diffValue / month;
-              if (monthC >= 1 && monthC <= 3) {
-                  result = " " + parseInt(monthC) + " 月前"
-              } else if (weekC >= 1 && weekC <= 3) {
-                  result = " " + parseInt(weekC) + " 周前"
-              } else if (dayC >= 1 && dayC <= 6) {
-                  result = " " + parseInt(dayC) + " 天前"
-              } else if (hourC >= 1 && hourC <= 23) {
-                  result = " " + parseInt(hourC) + " 小时前"
-              } else if (minC >= 1 && minC <= 59) {
-                  result = " " + parseInt(minC) + " 分钟前"
-              } else if (diffValue >= 0 && diffValue <= minute) {
-                  result = "刚刚"
-              } else {
-                  var datetime = new Date();
-                  datetime.setTime(dateTimeStamp);
-                  var Nyear = datetime.getFullYear();
-                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
-                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
-                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
-                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
-                  result = Nyear + "-" + Nmonth + "-" + Ndate
-              }
-              return result;
-          }
-          var lastUpDate = document.getElementById('last-update').innerHTML;
-          try {
-            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
-          } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2023-01-02 日';
-          }
-        </script>
-        
-      
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%A1%AE%E5%AE%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%AB%AF%E5%8F%A3"><span class="toc-text">1. 确定客户端端口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86"><span class="toc-text">2. 配置代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%B5%8B%E8%AF%95"><span class="toc-text">3. 测试</span></a></li></ol>
     </div>
-  </div>
-</section>
+  </section>
+
 
   
 
@@ -1089,8 +574,8 @@ Git 提供了一种可...
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="macOS - 给 Terminal(终端)配置网络代理";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
