@@ -1,11 +1,27 @@
 ---
-title: Powershell 修改提示符的文字内容和颜色
+title: PowerShell 修改提示符的文字内容和样式
 categories:
   - 未分类
 tags:
   - 无标签
 date: 2022-04-22 00:08:13
 ---
+
+## 前言
+
+默认的 PowerShell 提示符丑？
+
+其实我们可以通过编辑 PowerShell 的启动脚本，来自定义提示符的文字内容和样式
+
+### 配置脚本执行权限
+
+在可以运行 PowerShell 脚本之前，你需要将本地的 ExecutionPolicy 设置为 RemoteSigned
+
+在 PowerShell 中执行下面的命令，更精细化的配置参见 [微软文档 Set-ExecutionPolicy](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.2)
+
+```
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+```
 
 ## 查看当前用户 ps1 文件位置
 
@@ -61,4 +77,4 @@ function prompt
 
 ## 最终效果
 
-![PowerShell自定义提示符](./Powershell-修改提示符的文字内容和颜色/PowerShell自定义提示符.png)
+![PowerShell自定义提示符](./PowerShell-修改提示符的文字内容和样式/PowerShell自定义提示符.png)
