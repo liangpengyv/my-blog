@@ -19,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Powershell 修改提示符的文字内容和颜色 - 老梁有墨</title>
+  <title>PowerShell 修改提示符的文字内容和样式 - 老梁有墨</title>
   
     <meta name="keywords" content="无标签">
   
@@ -323,7 +323,7 @@
     
     
       <h1 class="title">
-        Powershell 修改提示符的文字内容和颜色
+        PowerShell 修改提示符的文字内容和样式
       </h1>
       <div class='new-meta-box'>
         
@@ -354,7 +354,7 @@
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="Powershell 修改提示符的文字内容和颜色" data-path="/posts/20220422000813/">
+      <div id="lc-pv" data-title="PowerShell 修改提示符的文字内容和样式" data-path="/posts/20220422000813/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -371,7 +371,12 @@
 
 
   
-  <h2 id="查看当前用户-ps1-文件位置"><a href="#查看当前用户-ps1-文件位置" class="headerlink" title="查看当前用户 ps1 文件位置"></a>查看当前用户 ps1 文件位置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $Profile</span><br></pre></td></tr></table></figure>
+  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>默认的 PowerShell 提示符丑？</p>
+<p>其实我们可以通过编辑 PowerShell 的启动脚本，来自定义提示符的文字内容和样式</p>
+<h3 id="配置脚本执行权限"><a href="#配置脚本执行权限" class="headerlink" title="配置脚本执行权限"></a>配置脚本执行权限</h3><p>在可以运行 PowerShell 脚本之前，你需要将本地的 ExecutionPolicy 设置为 RemoteSigned</p>
+<p>在 PowerShell 中执行下面的命令，更精细化的配置参见 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.2">微软文档 Set-ExecutionPolicy</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine</span><br></pre></td></tr></table></figure>
+<h2 id="查看当前用户-ps1-文件位置"><a href="#查看当前用户-ps1-文件位置" class="headerlink" title="查看当前用户 ps1 文件位置"></a>查看当前用户 ps1 文件位置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $Profile</span><br></pre></td></tr></table></figure>
 <p>得到形如下方的绝对路径，表示当前用户 ps1 配置文件默认加载位置</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\liang\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1</span><br></pre></td></tr></table></figure>
 <h2 id="编辑-ps1-配置文件"><a href="#编辑-ps1-配置文件" class="headerlink" title="编辑 ps1 配置文件"></a>编辑 ps1 配置文件</h2><p>编辑这个 ps1 配置文件，可以改变 PowerShell 初始化时的一些行为</p>
@@ -405,10 +410,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2023-01-02T10:44:00+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2023-02-16T10:33:24+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2023年1月2日</p>
+    <p>更新于：2023年2月16日</p>
   </a>
 </div>
 
@@ -430,7 +435,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.laoliang.ink/posts/20220422000813/&title=Powershell 修改提示符的文字内容和颜色 - 老梁有墨&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.laoliang.ink/posts/20220422000813/&title=PowerShell 修改提示符的文字内容和样式 - 老梁有墨&summary="
           
           >
           
@@ -442,7 +447,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.laoliang.ink/posts/20220422000813/&title=Powershell 修改提示符的文字内容和颜色 - 老梁有墨&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.laoliang.ink/posts/20220422000813/&title=PowerShell 修改提示符的文字内容和样式 - 老梁有墨&summary="
           
           >
           
@@ -454,7 +459,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.laoliang.ink/posts/20220422000813/&title=Powershell 修改提示符的文字内容和颜色 - 老梁有墨&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.laoliang.ink/posts/20220422000813/&title=PowerShell 修改提示符的文字内容和样式 - 老梁有墨&summary="
           
           >
           
@@ -476,7 +481,7 @@
       
         <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer noopener"
           
-            target="_blank" href="https://t.me/share/url?url=https://www.laoliang.ink/posts/20220422000813/&text=Powershell 修改提示符的文字内容和颜色 - 老梁有墨"
+            target="_blank" href="https://t.me/share/url?url=https://www.laoliang.ink/posts/20220422000813/&text=PowerShell 修改提示符的文字内容和样式 - 老梁有墨"
           
           >
           
@@ -555,7 +560,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7-ps1-%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE"><span class="toc-text">查看当前用户 ps1 文件位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%BE%91-ps1-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">编辑 ps1 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%94%9F%E6%95%88"><span class="toc-text">使自定义配置文件生效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C"><span class="toc-text">最终效果</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%84%9A%E6%9C%AC%E6%89%A7%E8%A1%8C%E6%9D%83%E9%99%90"><span class="toc-text">配置脚本执行权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7-ps1-%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE"><span class="toc-text">查看当前用户 ps1 文件位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%BE%91-ps1-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">编辑 ps1 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%94%9F%E6%95%88"><span class="toc-text">使自定义配置文件生效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C"><span class="toc-text">最终效果</span></a></li></ol>
     </div>
   </section>
 
@@ -575,7 +580,7 @@
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="Powershell 修改提示符的文字内容和颜色";
+  pdata.postTitle="PowerShell 修改提示符的文字内容和样式";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 

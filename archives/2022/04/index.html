@@ -384,18 +384,18 @@
     
     <h2 class="article-title" >
       <a href="/posts/20220422000813/">
-        Powershell 修改提示符的文字内容和颜色
+        PowerShell 修改提示符的文字内容和样式
       </a>
     </h2>
   
   <div class='md'>
     
       
-        查看当前用户 ps1 文件位置1echo $Profile
-得到形如下方的绝对路径，表示当前用户 ps1 配置文件默认加载位置
-1C:\Users\liang\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
-编辑 ps1 配置文件编辑这个 ps1 配置文件，可以改变 PowerShell 初始化时的一些行为
-如果是第一...
+        前言默认的 PowerShell 提示符丑？
+其实我们可以通过编辑 PowerShell 的启动脚本，来自定义提示符的文字内容和样式
+配置脚本执行权限在可以运行 PowerShell 脚本之前，你需要将本地的 ExecutionPolicy 设置为 RemoteSigned
+在 PowerShell 中执行下面的命令，更精细化的配置参见 微软文档 Set-ExecutionPolicy
+1S...
       
     
   </div>
@@ -616,8 +616,8 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Mon Jan 02 2023 17:51:04 GMT+0800 (中国标准时间)</div>
-            <div id="last-update-show">2023-01-02 日</div>
+            <div id="last-update" style="display: none;">Thu Feb 16 2023 10:34:03 GMT+0800 (中国标准时间)</div>
+            <div id="last-update-show">2023-02-16 日</div>
           
         </div>
         
@@ -667,7 +667,7 @@
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2023-01-02 日';
+            document.getElementById('last-update-show').innerHTML = '2023-02-16 日';
           }
         </script>
         
