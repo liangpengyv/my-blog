@@ -66,3 +66,9 @@ git config --global i18n.commit.encoding utf-8
 git config --global i18n.logoutputencoding utf-8
 ```
 
+一劳永逸的方式：
+
+系统设置 -> 管理语言设置，打开旧版的区域设置窗口
+
+更改系统区域设置 -> Beta 版：使用 Unicode UTF-8 提供全球语言支持，勾选它，重启✅
+
