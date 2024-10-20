@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.2.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>Vue的双向绑定原理及简单实现 - 老梁有墨</title>
+  
+    <meta name="keywords" content="无标签">
+  
+
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="老梁有墨" type="application/atom+xml">
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/first.css">
+
+  
+
+  
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+  
+
+  <script id="loadcss"></script>
+
+</head>
+
+<body>
+  
+
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a id="s-comment" class="fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a id="s-toc" class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+            老梁有墨
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>首页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/book/
+                  
+                  
+                  
+                    id="book"
+                  >
+                  <i class='fas fa-book fa-fw'></i>读书
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-user-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://blog.laoliang.ink
+                  
+                  
+                  
+                    id="https:bloglaoliangink"
+                  >
+                  <i class='fas fa-star fa-fw'></i>新版(alpha)
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>首页
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/book/
+                  
+                  
+                  
+                    id="book"
+                  >
+                  <i class='fas fa-book fa-fw'></i>读书
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-user-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=https://blog.laoliang.ink
+                  
+                  
+                  
+                    id="https:bloglaoliangink"
+                  >
+                  <i class='fas fa-star fa-fw'></i>新版(alpha)
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  <div id="l_body">
+    <div id="l_cover">
+  
+    
+        <div id="full" class='cover-wrapper post search' style="display: none;">
+          
+            <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+    
+  </div>
+  <div class='bottom'>
+    
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/"
+              
+              
+              id="home">
+              <i class='fas fa-home fa-fw'></i><p>首页</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <i class='fas fa-archive fa-fw'></i><p>归档</p>
+            </a>
+          
+            <a href="/book/"
+              
+              
+              id="book">
+              <i class='fas fa-book fa-fw'></i><p>读书</p>
+            </a>
+          
+            <a href="/about/"
+              
+              
+              id="about">
+              <i class='fas fa-user-circle fa-fw'></i><p>关于</p>
+            </a>
+          
+            <a target="_blank" rel="noopener" href="https://blog.laoliang.ink"
+              
+              
+              id="https:bloglaoliangink">
+              <i class='fas fa-star fa-fw'></i><p>新版(alpha)</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
+  </div>
+
+    <div id='safearea'>
+      <div class='body-wrapper' id="pjax-container">
+        
+
+<div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        Vue的双向绑定原理及简单实现
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年3月6日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="Vue的双向绑定原理及简单实现" data-path="/posts/20210306094502/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  <h2 id="Vue-数据双向绑定原理"><a href="#Vue-数据双向绑定原理" class="headerlink" title="Vue 数据双向绑定原理"></a>Vue 数据双向绑定原理</h2><p>Vue 数据双向绑定是通过 <strong>数据劫持</strong> 结合 <strong>发布者-订阅者模式</strong> 的方式来实现的。</p>
+<p>我们先来看下定义在 Vue 初始化数据上的对象是什么样的</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">obj</span>: &#123;</span><br><span class="line">      <span class="attr">foo</span>: <span class="number">1</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">created</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">obj</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>结果：</strong></p>
+<p><img src="/posts/20210306094502/Vue-data%E7%BB%93%E6%9E%84.png" class="lazyload" data-srcset="/posts/20210306094502/Vue-data%E7%BB%93%E6%9E%84.png" srcset="data:image/png;base64,666" alt="Vue-data结构"></p>
+<p>可以看到属性 <code>foo</code> 有两个对应的 <code>get</code> 和 <code>set</code> 方法，这两个方法是如何出现的呢？这是因为 Vue 通过 <code>Object.defineProperty()</code> 来实现数据劫持的，它可以控制对象属性的一些特有操作，如读写权限、是否可枚举等，这里着重关注 <code>get</code> 和 <code>set</code> 两个函数。（有关 <code>Object.defineProperty()</code> 的更多内容，请点击 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">👆MDN-Object.defineProperty</a>）</p>
+<p>首先，我们使用字面量形式初始化一个对象属性</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> book = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;JavaScript高级程序设计&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(book.<span class="property">name</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(book)</span><br></pre></td></tr></table></figure>
+<p><strong>结果：</strong></p>
+<p><img src="/posts/20210306094502/JavaScript%E5%AF%B9%E8%B1%A1.png" class="lazyload" data-srcset="/posts/20210306094502/JavaScript%E5%AF%B9%E8%B1%A1.png" srcset="data:image/png;base64,666" alt="JavaScript对象"></p>
+<p>我们重新使用 <code>Object.defineProperty()</code> 的方式来定义对象属性，并对其 <code>get</code> 和 <code>set</code> 方法进行重写操作</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> book = &#123;&#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(book, <span class="string">&#x27;name&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">get</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;《&#x27;</span> + <span class="variable language_">this</span>.<span class="property">name</span> + <span class="string">&#x27;》&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">set</span>: <span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">name</span> = value</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;设置 name 属性值为：&#x27;</span> + value)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br><span class="line">book.<span class="property">name</span> = <span class="string">&#x27;JavaScript高级程序设计&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(book.<span class="property">name</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(book)</span><br></pre></td></tr></table></figure>
+<p><strong>结果：</strong></p>
+<p><img src="/posts/20210306094502/%E7%9B%91%E5%90%AC%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7.png" class="lazyload" data-srcset="/posts/20210306094502/%E7%9B%91%E5%90%AC%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7.png" srcset="data:image/png;base64,666" alt="监听对象属性"></p>
+<p>可以看到，这次打印出来的数据，和通过 Vue 初始化的数据结构比较像了吧，它也有了 <code>get</code> 和 <code>set</code> 函数，这正是 Vue 实现 <strong>数据劫持</strong> 的实现原理。</p>
+<h2 id="MVVM-实现思路分析"><a href="#MVVM-实现思路分析" class="headerlink" title="MVVM 实现思路分析"></a>MVVM 实现思路分析</h2><p>实现 MVVM 主要包含两个方面：</p>
+<ul>
+<li>数据变化更新视图</li>
+<li>视图变化更新数据</li>
+</ul>
+<p><img src="/posts/20210306094502/MVVM.png" class="lazyload" data-srcset="/posts/20210306094502/MVVM.png" srcset="data:image/png;base64,666" alt="MVVM"></p>
+<p>其中，view 更新 data 只需要通过事件监听即可，重点是 data 更新 view 是如何做到的呢？</p>
+<p>其实，上文 <strong>数据劫持</strong> 的示例已经给出了答案。通过 <code>Object.defineProperty()</code> 对属性设置一个 set 函数，当数据改变时，set 函数就会被触发，所以我们只需要将更新 view 的方法写到这里，就可以实现 data 更新 view 了。</p>
+<p><img src="/posts/20210306094502/%E6%95%B0%E6%8D%AE%E7%9B%91%E5%90%AC.png" class="lazyload" data-srcset="/posts/20210306094502/%E6%95%B0%E6%8D%AE%E7%9B%91%E5%90%AC.png" srcset="data:image/png;base64,666" alt="数据监听"></p>
+<h2 id="实现一个监听器-Observer"><a href="#实现一个监听器-Observer" class="headerlink" title="实现一个监听器 Observer"></a>实现一个监听器 Observer</h2><p><strong>监听器</strong> 的作用就是去监听数据的每一个属性，通过上面的例子，我们知道可以用 <code>Object.defineProperty()</code> 方法实现。</p>
+<p>当监听到属性值发生变化时，通知 <strong>订阅者 Watcher</strong> 执行更新函数去更新视图。</p>
+<p>这个过程中，会有许多订阅者，所以我们还需要创建一个 <strong>订阅器 Dep</strong> 来统一管理，订阅器 Dep 有一个容器 subs，负责收集订阅者。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">defineReactive</span>(<span class="params">data, key, value</span>) &#123;</span><br><span class="line">    <span class="comment">// 递归遍历所有子属性</span></span><br><span class="line">    <span class="title function_">observe</span>(value)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> dep = <span class="keyword">new</span> <span class="title class_">Dep</span>()</span><br><span class="line">    <span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(data, key, &#123;</span><br><span class="line">        <span class="attr">enumerable</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">configurable</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">get</span>: <span class="keyword">function</span> <span class="title function_">reactiveGetter</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="title class_">Dep</span>.<span class="property">target</span>) &#123;</span><br><span class="line">                dep.<span class="title function_">addSub</span>(<span class="title class_">Dep</span>.<span class="property">target</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">set</span>: <span class="keyword">function</span> <span class="title function_">reactiveSetter</span>(<span class="params">newValue</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (value === newValue) &#123;</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">            value = newValue</span><br><span class="line">            dep.<span class="title function_">notify</span>()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">observe</span>(<span class="params">data</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!data || <span class="keyword">typeof</span> data !== <span class="string">&#x27;object&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title class_">Object</span>.<span class="title function_">keys</span>(data).<span class="title function_">forEach</span>(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">defineReactive</span>(data, key, data[key])</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Dep</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">subs</span> = []</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Dep</span>.<span class="property"><span class="keyword">prototype</span></span> = &#123;</span><br><span class="line">    <span class="title function_">addSub</span>(<span class="params">sub</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">subs</span>.<span class="title function_">push</span>(sub)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">notify</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">subs</span>.<span class="title function_">forEach</span>(<span class="function"><span class="params">sub</span> =&gt;</span> &#123;</span><br><span class="line">            sub.<span class="title function_">update</span>()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Dep</span>.<span class="property">target</span> = <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+<h2 id="实现一个订阅者-Watcher"><a href="#实现一个订阅者-Watcher" class="headerlink" title="实现一个订阅者 Watcher"></a>实现一个订阅者 Watcher</h2><p><strong>订阅者 Watcher</strong> 的作用主要是接收属性变化的通知，然后去执行视图更新函数。</p>
+<p>订阅者 Watcher 初始化时，需要将自己添加到订阅器 Dep 中。我们已经知道在监听器 Observer 的 get 函数中通过订阅器 Dep 执行了添加订阅者 Wather 的操作，所以只需要在 Watcher 初始化时触发 Observer 的 get 函数即可。而要触发 get 函数，只要获取对应的属性值便可触发了，这正是因为我们使用了 <code>Object.defineProperty()</code> 进行数据监听。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Watcher</span>(<span class="params">vm, exp, cb</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">vm</span> = vm</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">exp</span> = exp</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">cb</span> = cb</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">value</span> = <span class="variable language_">this</span>.<span class="title function_">get</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Watcher</span>.<span class="property"><span class="keyword">prototype</span></span> = &#123;</span><br><span class="line">    <span class="title function_">update</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> value = <span class="variable language_">this</span>.<span class="property">vm</span>.<span class="property">$data</span>[<span class="variable language_">this</span>.<span class="property">exp</span>]</span><br><span class="line">        <span class="keyword">const</span> oldValue = <span class="variable language_">this</span>.<span class="property">value</span></span><br><span class="line">        <span class="keyword">if</span> (value !== oldValue) &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">value</span> = value</span><br><span class="line">            <span class="variable language_">this</span>.<span class="title function_">cb</span>(value)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="title class_">Dep</span>.<span class="property">target</span> = <span class="variable language_">this</span></span><br><span class="line">        <span class="keyword">const</span> value = <span class="variable language_">this</span>.<span class="property">vm</span>.<span class="property">$data</span>[<span class="variable language_">this</span>.<span class="property">exp</span>]</span><br><span class="line">        <span class="title class_">Dep</span>.<span class="property">target</span> = <span class="literal">null</span></span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实现一个解析器-Compile"><a href="#实现一个解析器-Compile" class="headerlink" title="实现一个解析器 Compile"></a>实现一个解析器 Compile</h2><p><strong>解析器 Compile</strong> 的作用主要有两个方面：</p>
+<ol>
+<li>解析 DOM 节点，识别出模板指令，替换模板数据</li>
+<li>对模板指令的节点添加订阅者，绑定更新函数</li>
+</ol>
+<p>为实现这两点功能，我们有如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Compile</span>(<span class="params">vm</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">vm</span> = vm</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">el</span> = vm.<span class="property">$el</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">fragment</span> = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">init</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Compile</span>.<span class="property"><span class="keyword">prototype</span></span> = &#123;</span><br><span class="line">    <span class="title function_">init</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">fragment</span> = <span class="variable language_">this</span>.<span class="title function_">nodeToFragment</span>(<span class="variable language_">this</span>.<span class="property">el</span>)</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">compileNode</span>(<span class="variable language_">this</span>.<span class="property">fragment</span>)</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">el</span>.<span class="title function_">appendChild</span>(<span class="variable language_">this</span>.<span class="property">fragment</span>)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="title function_">nodeToFragment</span>(<span class="params">el</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> fragment = <span class="variable language_">document</span>.<span class="title function_">createDocumentFragment</span>()</span><br><span class="line">        <span class="keyword">let</span> child = el.<span class="property">firstChild</span></span><br><span class="line">        <span class="keyword">while</span> (child) &#123;</span><br><span class="line">            fragment.<span class="title function_">appendChild</span>(child)</span><br><span class="line">            child = el.<span class="property">firstChild</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> fragment</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">compileNode</span>(<span class="params">fragment</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> childNodes = fragment.<span class="property">childNodes</span></span><br><span class="line">        <span class="keyword">const</span> childNodesArray = [...childNodes]</span><br><span class="line">        childNodesArray.<span class="title function_">forEach</span>(<span class="function"><span class="params">node</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="title function_">isElementNode</span>(node)) &#123;</span><br><span class="line">                <span class="variable language_">this</span>.<span class="title function_">compile</span>(node)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> reg = <span class="regexp">/\&#123;\&#123;(.*)\&#125;\&#125;/</span></span><br><span class="line">            <span class="keyword">let</span> text = node.<span class="property">textContent</span></span><br><span class="line">            <span class="keyword">if</span> (reg.<span class="title function_">test</span>(text)) &#123;</span><br><span class="line">                <span class="keyword">let</span> prop = reg.<span class="title function_">exec</span>(text)[<span class="number">1</span>]</span><br><span class="line">                <span class="variable language_">this</span>.<span class="title function_">compileText</span>(node, prop)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (node.<span class="property">childNodes</span> &amp;&amp; node.<span class="property">childNodes</span>.<span class="property">length</span>) &#123;</span><br><span class="line">                <span class="variable language_">this</span>.<span class="title function_">compileNode</span>(node)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">compile</span>(<span class="params">node</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> nodeAttrs = node.<span class="property">attributes</span></span><br><span class="line">        <span class="keyword">const</span> nodeAttrsArray = [...nodeAttrs]</span><br><span class="line">        nodeAttrsArray.<span class="title function_">forEach</span>(<span class="function"><span class="params">attr</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> name = attr.<span class="property">name</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="title function_">isDirective</span>(name)) &#123;</span><br><span class="line">                <span class="keyword">let</span> value = attr.<span class="property">value</span></span><br><span class="line">                <span class="keyword">if</span> (name === <span class="string">&#x27;v-model&#x27;</span>) &#123;</span><br><span class="line">                    <span class="variable language_">this</span>.<span class="title function_">compileModel</span>(node, value)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">compileModel</span>(<span class="params">node, prop</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> val = <span class="variable language_">this</span>.<span class="property">vm</span>.<span class="property">$data</span>[prop]</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">updateModel</span>(node, val)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Watcher</span>(<span class="variable language_">this</span>.<span class="property">vm</span>, prop, <span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="title function_">updateModel</span>(node, value)</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        node.<span class="title function_">addEventListener</span>(<span class="string">&#x27;input&#x27;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> newValue = event.<span class="property">target</span>.<span class="property">value</span></span><br><span class="line">            <span class="keyword">if</span> (val === newValue) &#123;</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">vm</span>.<span class="property">$data</span>[prop] = newValue</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">compileText</span>(<span class="params">node, prop</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> text = <span class="variable language_">this</span>.<span class="property">vm</span>.<span class="property">$data</span>[prop]</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">updateView</span>(node, text)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Watcher</span>(<span class="variable language_">this</span>.<span class="property">vm</span>, prop, <span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="title function_">updateView</span>(node, value)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="title function_">updateModel</span>(<span class="params">node, value</span>) &#123;</span><br><span class="line">        node.<span class="property">value</span> = <span class="keyword">typeof</span> value === <span class="string">&#x27;undefined&#x27;</span> ? <span class="string">&#x27;&#x27;</span> : value</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">updateView</span>(<span class="params">node, value</span>) &#123;</span><br><span class="line">        node.<span class="property">textContent</span> = <span class="keyword">typeof</span> value === <span class="string">&#x27;undefined&#x27;</span> ? <span class="string">&#x27;&#x27;</span> : value</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="title function_">isDirective</span>(<span class="params">attr</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> attr.<span class="title function_">indexOf</span>(<span class="string">&#x27;v-&#x27;</span>) !== -<span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">isElementNode</span>(<span class="params">node</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> node.<span class="property">nodeType</span> === <span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">isTextNode</span>(<span class="params">node</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> node.<span class="property">nodeType</span> === <span class="number">3</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段较长的代码，其核心目的就是实现上面说的 2 点功能。</p>
+<p>其中，在解析 DOM 过程中，因为会频繁操作 DOM，所以这里先将其缓存到一个 fragment 中，然后再进行解析，解析编译完成后，再把 fragment 添加到页面中。</p>
+<p>这里我们只是简单的实现了差值表达式 <code>&#123;&#123;&#125;&#125;</code> 和 <code>v-model</code> 的识别。</p>
+<h2 id="创建-MyVue"><a href="#创建-MyVue" class="headerlink" title="创建 MyVue"></a>创建 MyVue</h2><p>这里我们创建一个 MyVue 类，来连接 Observer、Watcher、Compile。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">MyVue</span>(<span class="params">options</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">$el</span> = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(options.<span class="property">el</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">$data</span> = options.<span class="property">data</span></span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">init</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">MyVue</span>.<span class="property"><span class="keyword">prototype</span></span> = &#123;</span><br><span class="line">    <span class="title function_">init</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">proxyData</span>(<span class="variable language_">this</span>)</span><br><span class="line">        <span class="title function_">observe</span>(<span class="variable language_">this</span>.<span class="property">$data</span>)</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Compile</span>(<span class="variable language_">this</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">proxyData</span>(<span class="params">vm</span>) &#123;</span><br><span class="line">        <span class="title class_">Object</span>.<span class="title function_">keys</span>(vm.<span class="property">$data</span>).<span class="title function_">forEach</span>(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(vm, key, &#123;</span><br><span class="line">                <span class="attr">get</span>: <span class="keyword">function</span> <span class="title function_">proxyGetter</span>(<span class="params"></span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> vm.<span class="property">$data</span>[key]</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">set</span>: <span class="keyword">function</span> <span class="title function_">proxySetter</span>(<span class="params">value</span>) &#123;</span><br><span class="line">                    vm.<span class="property">$data</span>[key] = value</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用-MyVue-替换-Vue"><a href="#使用-MyVue-替换-Vue" class="headerlink" title="使用 MyVue 替换 Vue"></a>使用 MyVue 替换 Vue</h2><p>现在，我们使用 MyVue 来替换 Vue 接管我们的视图。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ... --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">&#x27;name&#x27;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- &lt;script src=&quot;vender/vue.js&quot;&gt;&lt;/script&gt; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;js/observer.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;js/watcher.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;js/compile.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;js/index.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// let app = new Vue(&#123;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//     el: &#x27;#app&#x27;,</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//     data: &#123;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//         name: &#x27;JavaScript&#x27;,</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//     &#125;</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// &#125;)</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// console.log(app)</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> myApp = <span class="keyword">new</span> <span class="title class_">MyVue</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">data</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">name</span>: <span class="string">&#x27;JavaScript&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(myApp)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/posts/20210306094502/MyVue%E6%BC%94%E7%A4%BA.gif" class="lazyload" data-srcset="/posts/20210306094502/MyVue%E6%BC%94%E7%A4%BA.gif" srcset="data:image/png;base64,666" alt="MyVue演示"></p>
+<p>到这里，我们便实现了一个简单的数据双向绑定。</p>
+<h2 id="完整源码"><a href="#完整源码" class="headerlink" title="完整源码"></a>完整源码</h2><p>完整源码请点击 <a target="_blank" rel="noopener" href="https://github.com/liangpengyv/vue-mvvm">👆GitHub-vue-mvvm</a> 查看</p>
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2023-01-02T10:44:00+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2023年1月2日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>无标签</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.laoliang.ink/posts/20210306094502/&title=Vue的双向绑定原理及简单实现 - 老梁有墨&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.laoliang.ink/posts/20210306094502/&title=Vue的双向绑定原理及简单实现 - 老梁有墨&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.laoliang.ink/posts/20210306094502/&title=Vue的双向绑定原理及简单实现 - 老梁有墨&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" srcset="data:image/png;base64,666"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAEYCAAAAACi5bZQAAAC/0lEQVR42u3aS3KEMAwFQO5/6eQCodCPCWLauyTE2M1G9aTjx/pzHQjAgAEDBgyYNTBHcV39/+UBgvtf/X9238v7gAEDBgwYMGDWwYQLoIsDnR0wu38U7Oy91fuAAQMGDBgwYPbCRAu6KbjsObLnSz8PBgwYMGDAgPkamChEtPDrFnRgwIABAwYMGDDVAqoaXHUDLTBgwIABAwYMmHSDarhBlh0kemwnEgwYMGDAgAHzMZjpBtd//1y+DxgwYMCAAQNmDUx3dQOmqQ8ydh8wYMCAAQMGzBqYahCUvUi3EXcFNHYeMGDAgAEDBsxamOzGdxdu1YAsOmgULvDAgAEDBgwYMI+H6W4cDbKqAF2YsaAKDBgwYMCAAfMYmG7hVb1ANoDqAoEBAwYMGDBg3gfTDa6yf59q7E09DwYMGDBgwIDZC1MdvGkHQ9UL3HQuMGDAgAEDBswemHSQ0zxodwBoalDptNAEAwYMGDBgwKyDuSsYqoJNBVnZQhAMGDBgwIABswdmqqE2HVBlg6zqYBIYMGDAgAEDZj9MduMsbLWQrJ4rGrCBAQMGDBgwYPbCZIOi7oU+/QHShScYMGDAgAEDZh3MVEAUvdin4cONPDBgwIABAwbMGpjoBt0XVhtud8Ge/h4MGDBgwIABsw5malAoesHqxasNt/B7wIABAwYMGDBrYKoBVbdA6w78VBtqlx8IDBgwYMCAAbMW5q4XV4GP4XV5bjBgwIABAwbMGphqoyobJFULwGm4cIEHBgwYMGDAgHk8THdlG2HVQqzacEs3BMGAAQMGDBgwa2C6gU+2cVYNqqYCsfGgCgwYMGDAgAHz7zDdgZtpkOoAUXhA6Gw/MGDAgAEDBsxamGzBlW2ERSHvbrilCzwwYMCAAQMGzOtgqoVVFjA7wFQuCMGAAQMGDBgwXwcz9Vw2WOoOJIEBAwYMGDBg3gPTbbhVDxgNoqY+CBgwYMCAAQPmPTDVxlX2uWwhWd23HJyBAQMGDBgwYNbAWCcFngUGDBgwYMA8df0C2E2mPxo+meAAAAAASUVORK5CYII=">
+          </div>
+        </div>
+      
+    
+      
+        <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer noopener"
+          
+            target="_blank" href="https://t.me/share/url?url=https://www.laoliang.ink/posts/20210306094502/&text=Vue的双向绑定原理及简单实现 - 老梁有墨"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/posts/20210313223731/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>一种适合小团队的Git协作流程</p>
+          <p class='content'>
+团队开发中，遵循一个合理、清晰的Git使用流程，是非常重要的
+否则，每个人都提交一堆杂乱无章的commit，项目很快就会变得难以协调和维护
+
+分支介绍
+master - 主分支
+所有提供给用户...</p>
+        </a>
+      
+      
+        <a class='next' href='/posts/20200912201432/'>
+          <p class='title'>git stash 命令详解<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>1. 开篇：啥子是 git stash？你在开发时是不是遇到过这种情况：代码改了一半，突然有个紧急任务来了，比如老板喊你切换到另一个分支修个 Bug。问题来了，你这没提交的代码咋办？提交了怕污染...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-%E6%95%B0%E6%8D%AE%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86"><span class="toc-text">Vue 数据双向绑定原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MVVM-%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF%E5%88%86%E6%9E%90"><span class="toc-text">MVVM 实现思路分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%9B%91%E5%90%AC%E5%99%A8-Observer"><span class="toc-text">实现一个监听器 Observer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%AE%A2%E9%98%85%E8%80%85-Watcher"><span class="toc-text">实现一个订阅者 Watcher</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%A7%A3%E6%9E%90%E5%99%A8-Compile"><span class="toc-text">实现一个解析器 Compile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-MyVue"><span class="toc-text">创建 MyVue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-MyVue-%E6%9B%BF%E6%8D%A2-Vue"><span class="toc-text">使用 MyVue 替换 Vue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E6%BA%90%E7%A0%81"><span class="toc-text">完整源码</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+        
+        
+          <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="Vue的双向绑定原理及简单实现";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.add("show");
+  
+</script>
+
+        
+      </div>
+      
+  
+  <footer class="footer clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fa-solid fa-square-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+              </a>
+            
+          
+            
+              <a href="mailto:me@laoliang.ink"
+                class="social fa-regular fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+              </a>
+            
+          
+            
+              <a href="https://github.com/liangpengyv"
+                class="social fa-brands fa-github-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+              </a>
+            
+          
+            
+              <a href="https://space.bilibili.com/222021151"
+                class="social fa-brands fa-bilibili flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+              </a>
+            
+          
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div class='copyright'>
+        <p>Copyright © 2015-2024 By <a href="/about" class="licenses">LaoLiang</a></p>
+
+        </div>
+      
+    
+      
+        
+          <div><br></div>
+        
+      
+    
+      
+        
+          <div><p><a href="http://beian.miit.gov.cn/" target="_blank" class="records">蜀ICP备18017114号-1</a></p>
+</div>
+        
+      
+    
+  </footer>
+
+
+      <a id="s-top" class="fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+  </div>
+  <div>
+    <script>
+window.volantis={};
+window.volantis.loadcss=document.getElementById("loadcss");
+/********************脚本懒加载函数********************************/
+function loadScript(src, cb) {
+var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+var script = document.createElement('script');
+script.setAttribute('type','text/javascript');
+if (cb) script.onload = cb;
+script.setAttribute('src', src);
+HEAD.appendChild(script);
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script>
+<script>
+  
+  loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css", window.volantis.loadcss);
+  
+  
+  
+  
+</script>
+<!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    setTimeout(function() {
+      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+    }, 1);
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+</script>
+
+
+<!-- internal -->
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+  
+    <script>
+      window.FPConfig = {
+        delay: 0,
+        ignoreKeywords: [],
+        maxRPS: 5,
+        hoverDelay: 25
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: path,
+      appId: "uqAaIWIv2ofAppjRUdcP2OwR-gzGzoHsz",
+      appKey: "FTjmS9XeCFVoXj9ICXOPmULy",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-CN',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      recordIP: 'false',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('/js/search/hexo.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+		document.addEventListener("pjax:success", listenSearch);
+	
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'uqAaIWIv2ofAppjRUdcP2OwR-gzGzoHsz',
+    app_key: 'FTjmS9XeCFVoXj9ICXOPmULy',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://www.laoliang.ink' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://www.laoliang.ink' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://www.laoliang.ink' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+
+
+
+
+
+<script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script>
+
+<!-- more -->
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#l_cover",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+	  
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+       
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+	 
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+          if (typeof $.fancybox == "undefined") {
+            SCload_fancybox();
+          } else {
+            pjax_fancybox();
+          }
+        
+        
+        
+        
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+	  
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+	  
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>
