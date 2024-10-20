@@ -1,5 +1,5 @@
 ---
-title: JavaScript 浮点数与 0 按位或，实现舍弃小数位取证
+title: JavaScript 浮点数与 0 按位或，实现舍弃小数位取整
 categories:
   - 未分类
 tags:
