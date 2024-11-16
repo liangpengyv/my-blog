@@ -53,6 +53,42 @@ Add-PoshGitToProfile -AllHosts
 
 更多详细内容，参见：[Git 文档：A1.9 附录 A: 在其它环境中使用 Git - Git 在 PowerShell 中使用 Git](https://git-scm.com/book/zh/v2/附录-A%3A-在其它环境中使用-Git-Git-在-PowerShell-中使用-Git)
 
+## 自定义 posh-git 提示符
+
+当您导入 posh-git 模块时，它将用新的提示功能替换 PowerShell 的默认提示功能。当当前目录位于 Git 存储库中时，posh-git 提示功能将显示 Git 状态摘要信息。如果 posh-git 检测到您有自己的自定义提示功能，则不会替换提示功能。
+
+这里可以通过编辑当前用户 ps1 文件，实现自定义提示符：
+
+```sh
+echo $Profile
+```
+
+得到形如下方的绝对路径，表示当前用户 ps1 配置文件默认加载位置
+
+```
+C:\Users\liang\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+```
+
+打开并编辑这个文件，加入下面的内容：
+
+```sh
+$GitPromptSettings.DefaultPromptPrefix.Text = 'PS [$(Get-Date -f "HH:mm:ss")] '
+$GitPromptSettings.DefaultPromptPrefix.ForegroundColor = [ConsoleColor]::Magenta
+$GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true
+$GitPromptSettings.BeforePath = '{'
+$GitPromptSettings.AfterPath = '}'
+$GitPromptSettings.DefaultPromptPath.ForegroundColor = 0xFFA500
+$GitPromptSettings.BeforePath.ForegroundColor = 0xFFA500
+$GitPromptSettings.AfterPath.ForegroundColor = 0xFFA500
+$GitPromptSettings.DefaultPromptBeforeSuffix.Text = '`n'
+```
+
+你将获得一个同时拥有 时间、家目录缩写、git 状态的提示符，它会像下面这样：
+
+![自定义提示符](./在-PowerShell-中使用-Git/自定义提示符.png)
+
+更多详细内容，参见：[GitHub - dahlbyk/posh-git - Customizing the posh-git prompt](https://github.com/dahlbyk/posh-git?tab=readme-ov-file#customizing-the-posh-git-prompt)
+
 ## 顺便说下中文乱码问题
 
 PowerShell 下 `git log` 中文、`git status` 文件名等，可能存在中文乱码的问题。
