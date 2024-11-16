@@ -1,0 +1,2002 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.2.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <link rel="preload" href="/css/first.css" as="style">
+  
+
+  <!-- 页面元数据 -->
+  
+  <title>软件测试的分类 - 老梁有墨</title>
+  
+    <meta name="keywords" content="无标签">
+  
+
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="老梁有墨" type="application/atom+xml">
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/first.css">
+
+  
+
+  
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+  
+
+  <script id="loadcss"></script>
+
+  
+<script>
+if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
+    document.write(
+	'<style>'+
+		'html{'+
+			'overflow-x: hidden !important;'+
+			'overflow-y: hidden !important;'+
+		'}'+
+		'.kill-ie{'+
+			'text-align:center;'+
+			'height: 100%;'+
+			'margin-top: 15%;'+
+			'margin-bottom: 5500%;'+
+		'}'+
+	'</style>'+
+    '<div class="kill-ie">'+
+        '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
+        '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
+        '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
+    '</div>');
+</script>
+
+
+<noscript>
+	<style>
+		html{
+			overflow-x: hidden !important;
+			overflow-y: hidden !important;
+		}
+		.kill-noscript{
+			text-align:center;
+			height: 100%;
+			margin-top: 15%;
+			margin-bottom: 5500%;
+		}
+	</style>
+    <div class="kill-noscript">
+        <h1><b>抱歉，您的浏览器无法访问本站</b></h1>
+        <h3>本页面需要浏览器支持（启用）JavaScript</h3><br/>
+        <a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a>
+    </div>
+</noscript>
+
+</head>
+
+  <body>
+    
+
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a id="s-comment" class="fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a id="s-toc" class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+            老梁有墨
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>首页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/book/
+                  
+                  
+                  
+                    id="book"
+                  >
+                  <i class='fas fa-book fa-fw'></i>读书
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-user-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>首页
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/book/
+                  
+                  
+                  
+                    id="book"
+                  >
+                  <i class='fas fa-book fa-fw'></i>读书
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-user-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+    <div id="l_body">
+      <div id="l_cover">
+  
+    
+        <div id="full" class='cover-wrapper post search' style="display: none;">
+          
+            <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+    
+  </div>
+  <div class='bottom'>
+    
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/"
+              
+              
+              id="home">
+              <i class='fas fa-home fa-fw'></i><p>首页</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <i class='fas fa-archive fa-fw'></i><p>归档</p>
+            </a>
+          
+            <a href="/book/"
+              
+              
+              id="book">
+              <i class='fas fa-book fa-fw'></i><p>读书</p>
+            </a>
+          
+            <a href="/about/"
+              
+              
+              id="about">
+              <i class='fas fa-user-circle fa-fw'></i><p>关于</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
+  </div>
+
+      <div id="safearea">
+        <div class="body-wrapper" id="pjax-container">
+          
+
+<div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        软件测试的分类
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年4月8日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="软件测试的分类" data-path="/posts/20190408175829/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  
+  <h2 id="按测试阶段分类"><a href="#按测试阶段分类" class="headerlink" title="按测试阶段分类"></a>按测试阶段分类</h2><h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><blockquote>
+<p>对软件中最小可充实单元进行检查和验证</p>
+</blockquote>
+<h4 id="单元测试的原则"><a href="#单元测试的原则" class="headerlink" title="单元测试的原则"></a>单元测试的原则</h4><ol>
+<li>尽可能保证各个测试用例是相互独立的</li>
+<li>一般由代码的开发人员来实施，用以检验所开发的代码功能符合自己的设计要求</li>
+</ol>
+<h4 id="单元测试的益处"><a href="#单元测试的益处" class="headerlink" title="单元测试的益处"></a>单元测试的益处</h4><ol>
+<li>能尽早发现缺陷</li>
+<li>有利于重构</li>
+<li>简化集成</li>
+<li>单元测试一定程度替代文档</li>
+<li>用于设计，单元测试体验设计思路，设计本身可以用来验证设计</li>
+</ol>
+<h4 id="单元测试的限制"><a href="#单元测试的限制" class="headerlink" title="单元测试的限制"></a>单元测试的限制</h4><ol>
+<li>不可能覆盖所有的执行路径，所以不可能保证捕捉到所有路径的错误</li>
+<li>每一行代码，一般需要 3-5 行测试代码才能完成单元测试，所以存在投入和产出的一个平衡</li>
+</ol>
+<h4 id="单元测试框架"><a href="#单元测试框架" class="headerlink" title="单元测试框架"></a>单元测试框架</h4><ul>
+<li>JUnit</li>
+<li>NUnit</li>
+<li>PHPUnit</li>
+<li>CppUnit</li>
+</ul>
+<h3 id="集成测试"><a href="#集成测试" class="headerlink" title="集成测试"></a>集成测试</h3><blockquote>
+<p>是在单元测试的基础上，测试在将所有的软件单元按照概要设计规格说明的要求组装成模块、子系统或系统的过程中各部分工作是否达到或实现相应技术指标及要求的活动</p>
+</blockquote>
+<h4 id="集成测试的主要实施方案"><a href="#集成测试的主要实施方案" class="headerlink" title="集成测试的主要实施方案"></a>集成测试的主要实施方案</h4><ol>
+<li><p>Big Bang</p>
+<blockquote>
+<p>所有的东西都组装好，然后在进行测试</p>
+</blockquote>
+</li>
+<li><p>自顶向下</p>
+<blockquote>
+<p>递增组装软件结构的方法，一般来说从主程序开始，沿控制层逐层向下来集成</p>
+</blockquote>
+</li>
+<li><p>自底向上</p>
+<blockquote>
+<p>最常用的集成方法，从程序模块最底层的模块开始，逐层向上组装，并逐层的测试；好处是，针对我们已经集成的测试，不需要再针对上一层编写装模块</p>
+</blockquote>
+</li>
+<li><p>核心系统集成</p>
+<blockquote>
+<p>先把核心的部分挑选出来，并对这些部分进行集成测试，在测试通过的基础上，在向外围拓展进行测试</p>
+</blockquote>
+</li>
+<li><p>高频集成</p>
+<blockquote>
+<p>同步软件开发过程，每过一段时间，就对软件进行集成测试，常说的持续集成</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="系统测试"><a href="#系统测试" class="headerlink" title="系统测试"></a>系统测试</h3><blockquote>
+<p>是将经过集成测试的软件，作为计算机系统的一个部分，与系统中其他部分结合起来，在实际运行环境下对计算机系统进行的一系列严格有效的测试，已发现软件潜在的问题，保证系统正常运行</p>
+</blockquote>
+<h4 id="关注点"><a href="#关注点" class="headerlink" title="关注点"></a>关注点</h4><ul>
+<li>关注系统本身的使用</li>
+<li>关注系统与其他相关系统间的连通</li>
+<li>关注系统在不同使用压力下的表现</li>
+<li>关注系统在真实使用环境下的表现</li>
+</ul>
+<h3 id="验收测试"><a href="#验收测试" class="headerlink" title="验收测试"></a>验收测试</h3><blockquote>
+<p>也称交付测试，针对用户需求、业务流程的正式的测试，确定系统是否满足验收标准，由用户、客户或其他授权机构决定是否接受系统</p>
+</blockquote>
+<h4 id="细分"><a href="#细分" class="headerlink" title="细分"></a>细分</h4><ul>
+<li>用户验收测试 - 一般由开发方交付前自己做的测试</li>
+<li>运行验收测试 - 从运维层面看系统是否能够正常运行，比如系统上线后备份、容灾</li>
+<li>合同和规范验收测试</li>
+<li>alpha 测试 - 开发者提供的环境进行的测试，一般由用户来执行</li>
+<li>beta 测试 - 完全脱离开发环境，由用户提供的环境进行测试</li>
+</ul>
+<h2 id="按测试手段分类"><a href="#按测试手段分类" class="headerlink" title="按测试手段分类"></a>按测试手段分类</h2><blockquote>
+<ul>
+<li>黑盒测试、白盒测试</li>
+<li>静态测试、动态测试</li>
+<li>手工测试、自动化测试</li>
+</ul>
+</blockquote>
+<h3 id="黑盒测试"><a href="#黑盒测试" class="headerlink" title="黑盒测试"></a>黑盒测试</h3><blockquote>
+<p>着眼于外部结构，不考虑内部逻辑，一般针对于软件外部的界面、可见的功能来测试，一般是从用户的视角通过不同的数据和事件来驱动系统，通过输出结果来进行判断</p>
+</blockquote>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>容易实施，不需要关注内部的实现</li>
+<li>更贴近用户的使用角度</li>
+</ol>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>测试覆盖率比较低，一般只能覆盖到代码量的不到 40%</li>
+<li>针对黑盒的自动化测试，复用率较低，维护成本较高</li>
+</ol>
+<h4 id="黑盒测试主要测试什么"><a href="#黑盒测试主要测试什么" class="headerlink" title="黑盒测试主要测试什么"></a>黑盒测试主要测试什么</h4><blockquote>
+<p>主要（更多）应用于 <strong>系统测试</strong> 阶段</p>
+</blockquote>
+<ol>
+<li>是否有不正确或遗漏的功能</li>
+<li>在接口上，输入是否能正确的接受，能否输出正确的结果</li>
+<li>是否有数据结构错误或外部信息（例如数据文件）访问错误</li>
+<li>性能上是否能够满足要求</li>
+</ol>
+<h4 id="黑盒测试的主要设计方法"><a href="#黑盒测试的主要设计方法" class="headerlink" title="黑盒测试的主要设计方法"></a>黑盒测试的主要设计方法</h4><ul>
+<li>等价类划分法</li>
+<li>边界值分析法</li>
+<li>错误推测法</li>
+<li>因果图法</li>
+<li>正交实验分析法</li>
+<li>状态迁移图法</li>
+<li>流程分析法</li>
+</ul>
+<h3 id="白盒测试"><a href="#白盒测试" class="headerlink" title="白盒测试"></a>白盒测试</h3><blockquote>
+<p>测试人员对内部结构是非常了解的，又称为结构化测试或透明盒测试；</p>
+<p>白盒测试是通过程序的逻辑结构设计测试用例，用逻辑的覆盖率来衡量测试的完整性</p>
+</blockquote>
+<h4 id="主要的逻辑单位"><a href="#主要的逻辑单位" class="headerlink" title="主要的逻辑单位"></a>主要的逻辑单位</h4><ul>
+<li>语句</li>
+<li>条件</li>
+<li>条件组合</li>
+<li>分支</li>
+<li>路径</li>
+</ul>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>迫使测试人员去仔细思考软件的实现，理解原理</li>
+<li>可以检测到代码中的每条分支和路径</li>
+<li>可以揭示隐藏在代码中的错误</li>
+<li>对代码的测试比较彻底</li>
+</ol>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>昂贵 - 因为要做到较高的覆盖率，所以成本高</li>
+<li>无法检测代码中遗漏的路径和数据敏感性错误</li>
+<li>不能直接验证需求的正确性</li>
+</ol>
+<h4 id="白盒测试的主要测试方法"><a href="#白盒测试的主要测试方法" class="headerlink" title="白盒测试的主要测试方法"></a>白盒测试的主要测试方法</h4><ul>
+<li>代码检测法</li>
+<li>静态结构分析法</li>
+<li>静态质量度量法</li>
+<li>逻辑覆盖法</li>
+<li>基本路径测试法</li>
+</ul>
+<h3 id="灰盒测试"><a href="#灰盒测试" class="headerlink" title="灰盒测试"></a>灰盒测试</h3><blockquote>
+<p>介于黑、白盒测试之间的，关注输出对于输入的正确性，同时也关注内部表现</p>
+</blockquote>
+<h3 id="静态测试"><a href="#静态测试" class="headerlink" title="静态测试"></a>静态测试</h3><blockquote>
+<p>静态测试是指 <strong>无需执行</strong> 被测程序，而是通过评审软件文档或代码，度量程序，度量程序静态复杂度，检查软件是否符合编程标准，借以发现编写的程序的不足之处，减少错误出现的概率</p>
+<p>特点就是，程序是不被运行的，直接看我们的文档或者代码，可以人工也可以通过自动化工具来做，通过静态的检查代码或者文档的测试手段</p>
+</blockquote>
+<h4 id="测试方式"><a href="#测试方式" class="headerlink" title="测试方式"></a>测试方式</h4><ul>
+<li>互审 - 程序员相互检查相互的代码</li>
+<li>走查 - 一个小组集体走查程序或文档</li>
+<li>会议 - 召开会议</li>
+</ul>
+<h3 id="动态测试"><a href="#动态测试" class="headerlink" title="动态测试"></a>动态测试</h3><blockquote>
+<p>是指通过运行被测程序，检查运行结果与预期结果的差异，并分析运行效率、正确性和健壮性等</p>
+</blockquote>
+<h3 id="手工测试"><a href="#手工测试" class="headerlink" title="手工测试"></a>手工测试</h3><blockquote>
+<p>由专门的测试人员从用户视角来验证软件是否满足设计要求的行为。更适用针对深度的测试和强调主观判断的测试</p>
+<p>常见的：众包测试、探索式测试，都是用手工测试完成的</p>
+</blockquote>
+<h4 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>容易发现缺陷</li>
+<li>容易实施</li>
+<li>创造性、灵活性</li>
+</ul>
+<h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>覆盖量化难</li>
+<li>重复测试效率低</li>
+<li>不一致性、可靠性低</li>
+<li>人力资源依赖</li>
+</ul>
+<h3 id="自动化测试"><a href="#自动化测试" class="headerlink" title="自动化测试"></a>自动化测试</h3><blockquote>
+<p>使用单独的测试工具软件控制测试的自动化执行以及对于其和结果进行自动检查</p>
+<p>常见的：单元测试、接口测试、性能测试等，都是用自动化测试完成的</p>
+</blockquote>
+<h4 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>高效率、速度快</li>
+<li>高复用性</li>
+<li>覆盖率容易度量</li>
+<li>准确、可靠</li>
+<li>不知疲劳</li>
+</ul>
+<h4 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>机械、发现缺陷率低</li>
+<li>一次性投入较大</li>
+</ul>
+<h2 id="按测试模式分类"><a href="#按测试模式分类" class="headerlink" title="按测试模式分类"></a>按测试模式分类</h2><h3 id="传统的瀑布模型"><a href="#传统的瀑布模型" class="headerlink" title="传统的瀑布模型"></a>传统的瀑布模型</h3><blockquote>
+<p>最早出现的软件开发模型，每一个阶段都是按顺序的向下，到下一个阶段，就像瀑布下落一样</p>
+<p>瀑布模型每一个阶段都是以上一个阶段的输出作为下一个阶段的输入</p>
+<ul>
+<li>项目计划 ——&gt; 需求分析 ——&gt; 软件设计 ——&gt; 程序开发 ——&gt; 软件测试 ——&gt; 集成维护</li>
+</ul>
+</blockquote>
+<h4 id="优点-4"><a href="#优点-4" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>强调需求、设计的作用</li>
+<li>前一阶段完成后，只需要关注后续阶段</li>
+<li>为项目提供了按阶段划分的检查点，里程碑清晰</li>
+<li>文档规范</li>
+</ul>
+<h4 id="缺点-4"><a href="#缺点-4" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>难以适应需求的频繁变化</li>
+<li>项目周期后段才能看到成果</li>
+<li>强制的里程碑、完成时间点</li>
+<li>文档工作量大</li>
+</ul>
+<h3 id="V-模型"><a href="#V-模型" class="headerlink" title="V 模型"></a>V 模型</h3><blockquote>
+<ul>
+<li>需求分析 ——&gt; 概要设计 ——&gt; 详细设计 ——&gt; 软件编码 -&gt;</li>
+<li>验收测试 &lt;—— 系统测试 &lt;—— 集成测试 &lt;—— 单元测试 &lt;-</li>
+</ul>
+<p>是瀑布模型的变种，是目前使用最广泛的一种模型，在 V 模型中，明确表明了测试过程的不同级别或者不同阶段，并且描述了这些阶段和开发过程各个阶段的对应关系</p>
+<p>局限性是：仅仅把测试过程作为需求分析和编码之后的阶段，所以对于需求分析的测试只有到最后的验收测试才会发现问题</p>
+</blockquote>
+<h3 id="W-模型"><a href="#W-模型" class="headerlink" title="W 模型"></a>W 模型</h3><blockquote>
+<p>也称为 双 V 模型，是对 V 模型的改进模型</p>
+<p>增加了软件开发各个阶段同步进行验证和确认的活动，测试时伴随整个开发周期进行，测试的对象也不仅仅是程序，他要对需求和设计都要进行相应的测试，开发和测试是两个并行的流程</p>
+<p>W 模型 有利于及时了解项目的测试风险，及早确定应对方案</p>
+<p>W 模型 也有其局限性，该模型中，需求、编码、测试仍然是串行的，测试和开发保持着一个线性的关系，只有在上一阶段完成之后才能进入下一阶段</p>
+</blockquote>
+<h3 id="X-模型"><a href="#X-模型" class="headerlink" title="X 模型"></a>X 模型</h3><blockquote>
+<p>针对 V 模型 提出的改进</p>
+<p>主要解决交接和频繁集成的周期的问题</p>
+</blockquote>
+<h3 id="敏捷测试"><a href="#敏捷测试" class="headerlink" title="敏捷测试"></a>敏捷测试</h3><blockquote>
+<p>Agile Testing —— 遵循 <strong>敏捷宣言</strong> 的一种测试实践</p>
+<p><strong>敏捷宣言</strong>：</p>
+<p>个体与交互 重于 过程和工具</p>
+<p>可用的软件 重于 完备的文档</p>
+<p>客户合作 重于 合同谈判</p>
+<p>响应变化 重于 遵循计划</p>
+<ul>
+<li>在以上每对比较中，后者并非完全无价值，但我们更看重前者</li>
+</ul>
+</blockquote>
+<h4 id="敏捷测试的特点"><a href="#敏捷测试的特点" class="headerlink" title="敏捷测试的特点"></a>敏捷测试的特点</h4><ul>
+<li>强调从客户角度进行测试</li>
+<li>重点关注迭代测试新功能，不再强调测试阶段</li>
+<li>尽早测试，不间断的测试，具备条件即测试</li>
+<li>强调持续反馈</li>
+<li>预防缺陷重于发现缺陷</li>
+</ul>
+<h4 id="敏捷测试-VS-传统测试"><a href="#敏捷测试-VS-传统测试" class="headerlink" title="敏捷测试 VS 传统测试"></a>敏捷测试 VS 传统测试</h4><table>
+<thead>
+<tr>
+<th>传统测试</th>
+<th>敏捷测试</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>- 测试时质量的最后保护者</td>
+<td>- 开发和测试人员是紧密合作，大家都有责任对软件负责</td>
+</tr>
+<tr>
+<td>- 严格的变更管理</td>
+<td>- 变更是可接受的，拥抱变更</td>
+</tr>
+<tr>
+<td>- 预先的计划和细节的准备</td>
+<td>- 计划随着进展时常调整</td>
+</tr>
+<tr>
+<td>- 重量级文档</td>
+<td>- 只需要绝对必要的文档</td>
+</tr>
+<tr>
+<td>- 各阶段测试严格的入口和出口标准</td>
+<td>- 各迭代之间已经没有明显的入口和出口标准</td>
+</tr>
+<tr>
+<td>- 更多在回归测试是进行重量级的自动化测试</td>
+<td>- 所有阶段都需要自动测试，每个人都需要做，是项目集成的一部分</td>
+</tr>
+<tr>
+<td>- 严格依赖流程执行</td>
+<td>- 流程不再需要严格执行</td>
+</tr>
+<tr>
+<td>- 测试团队和开发团队是相对独立的</td>
+<td>- 团队合作是无缝隙合作的</td>
+</tr>
+</tbody></table>
+<h3 id="基于脚本的测试"><a href="#基于脚本的测试" class="headerlink" title="基于脚本的测试"></a>基于脚本的测试</h3><blockquote>
+<p>Script-based Testing</p>
+<p>Scripted Testing (ST)</p>
+<p>Exploratory Testing (ET)</p>
+</blockquote>
+<h3 id="基于风险的测试-RBT"><a href="#基于风险的测试-RBT" class="headerlink" title="基于风险的测试 - RBT"></a>基于风险的测试 - RBT</h3><blockquote>
+<p>Risk-based Testing</p>
+<p>一种基于对软件失效的风险评估并以此指导测试计划、设计、执行、结果评价的软件测试类型</p>
+</blockquote>
+<h4 id="哪些是风险？"><a href="#哪些是风险？" class="headerlink" title="哪些是风险？"></a>哪些是风险？</h4><ul>
+<li>质量风险</li>
+<li>管理风险</li>
+<li>风险级别 = 风险可能性 x 风险严重度</li>
+</ul>
+<h4 id="识别风险"><a href="#识别风险" class="headerlink" title="识别风险"></a>识别风险</h4><blockquote>
+<p>风险要素分 = Sum（单项权重 * 得分）</p>
+</blockquote>
+<h5 id="可能性"><a href="#可能性" class="headerlink" title="可能性"></a>可能性</h5><ul>
+<li>复杂性</li>
+<li>时间压力</li>
+<li>高变更率</li>
+<li>技能水平</li>
+<li>地理分散度</li>
+</ul>
+<h5 id="严重程度"><a href="#严重程度" class="headerlink" title="严重程度"></a>严重程度</h5><ul>
+<li>使用频率</li>
+<li>失效可视性</li>
+<li>商业损失</li>
+<li>组织负面影响和损害</li>
+<li>社会损失和法律责任</li>
+</ul>
+<h3 id="基于探索式的测试-ST"><a href="#基于探索式的测试-ST" class="headerlink" title="基于探索式的测试 - ST"></a>基于探索式的测试 - ST</h3><blockquote>
+<p>完全抛开测试脚本的测试</p>
+<p>它是一种测试风格、思维，而不是一种测试技术</p>
+</blockquote>
+<h4 id="ET-和-ST-使用"><a href="#ET-和-ST-使用" class="headerlink" title="ET 和 ST 使用"></a>ET 和 ST 使用</h4><ul>
+<li>Pure Scripted</li>
+<li>Vague Scripted</li>
+<li>Fragmentary test cases</li>
+<li>Charters</li>
+<li>Roles</li>
+<li>Freestyle ET</li>
+</ul>
+<h4 id="ST-vs-ET"><a href="#ST-vs-ET" class="headerlink" title="ST vs ET"></a>ST vs ET</h4><table>
+<thead>
+<tr>
+<th>ST</th>
+<th>ET</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>- 系统性强</td>
+<td>- 自由灵活</td>
+</tr>
+<tr>
+<td>- 容易管理、控制</td>
+<td>- 和 ST 是互补的</td>
+</tr>
+<tr>
+<td>- 设计在先，执行在后</td>
+<td>- 执行和设计（思考）并行</td>
+</tr>
+<tr>
+<td>- 主要是验证自己的思路</td>
+<td>- 不断和系统交互，带着问题测试</td>
+</tr>
+<tr>
+<td>- 可预见性</td>
+<td>- 学习的过程</td>
+</tr>
+</tbody></table>
+<h4 id="探索式测试的优点"><a href="#探索式测试的优点" class="headerlink" title="探索式测试的优点"></a>探索式测试的优点</h4><ul>
+<li>更能激发测试人员的创造性和工作乐趣</li>
+<li>增加了发现新的或者较深入 Bug 的可能性</li>
+<li>可以在较短时间内找到更多 Bug 以及对 SUT 做出一个快速的评估</li>
+<li>有利于更加有效地实施自动化</li>
+<li>更加适用于敏捷项目</li>
+<li>减少了再简单、繁复上用例的无谓编写时间</li>
+</ul>
+<h4 id="探索式测试的缺点"><a href="#探索式测试的缺点" class="headerlink" title="探索式测试的缺点"></a>探索式测试的缺点</h4><ul>
+<li>测试管理上有局限性，较难协调和控制</li>
+<li>对于 Bug 的重复利用和重现上作用有限</li>
+<li>对测试人员的测试技能和业务知识深度依赖较大</li>
+<li>只有在 SUT 已完全可用的前提下才更有作用</li>
+<li>ET 的生产率很难定义</li>
+<li>ET 本身较难进行自动化</li>
+</ul>
+<h4 id="执行探索式测试"><a href="#执行探索式测试" class="headerlink" title="执行探索式测试"></a>执行探索式测试</h4><ol>
+<li>Know You Mession</li>
+<li>Learning Session</li>
+<li>Coverage Session</li>
+<li>Deep Session</li>
+<li>Close Session</li>
+</ol>
+<h3 id="基于模型的测试-MBT"><a href="#基于模型的测试-MBT" class="headerlink" title="基于模型的测试 - MBT"></a>基于模型的测试 - MBT</h3><blockquote>
+<p>Model-based testing is software testing in which test cases are derived in whole or in part from a model that describes some (usually functional) aspects of the system under test (SUT).</p>
+</blockquote>
+<h2 id="按测试类型分类"><a href="#按测试类型分类" class="headerlink" title="按测试类型分类"></a>按测试类型分类</h2><h3 id="功能测试"><a href="#功能测试" class="headerlink" title="功能测试"></a>功能测试</h3><blockquote>
+<p>根据产品特性、操作描述和用户反感，测试一个产品的特性和可操作性为已确定他们满足设计需求</p>
+</blockquote>
+<h4 id="针对的问题"><a href="#针对的问题" class="headerlink" title="针对的问题"></a>针对的问题</h4><ul>
+<li>功能错误或遗漏</li>
+<li>界面问题</li>
+<li>性能错误</li>
+<li>数据及访问错误</li>
+<li>初始化及终止错误</li>
+</ul>
+<h4 id="功能测试工具"><a href="#功能测试工具" class="headerlink" title="功能测试工具"></a>功能测试工具</h4><ul>
+<li>QTP winrunner</li>
+<li>silkTest</li>
+<li>Rational robot</li>
+<li>selenium</li>
+<li>Watir</li>
+<li>Sikuli</li>
+</ul>
+<h3 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h3><blockquote>
+<p><strong>衍生出：</strong></p>
+<ul>
+<li>负载测试</li>
+<li>压力测试</li>
+<li>稳定性测试</li>
+</ul>
+</blockquote>
+<h4 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h4><ul>
+<li>并发用户数 VU</li>
+<li>每秒事务数 TPS</li>
+<li>系统响应时间</li>
+<li>设备性能</li>
+</ul>
+<h4 id="性能测试工具"><a href="#性能测试工具" class="headerlink" title="性能测试工具"></a>性能测试工具</h4><ul>
+<li>LoadRunner</li>
+<li>Silkperformer</li>
+<li>Jmeter</li>
+<li>WebLoad</li>
+<li>Apache Bench</li>
+<li>LoadUI</li>
+</ul>
+<h4 id="静态性能评估"><a href="#静态性能评估" class="headerlink" title="静态性能评估"></a>静态性能评估</h4><blockquote>
+<p>开发 Web 应用时，基于一系列 Web 应用页面性能优化的最佳实践对 Web 应用的页面进行静态分析，并给出评估结果的性能分析方法</p>
+</blockquote>
+<ul>
+<li>YSlow - 雅虎</li>
+<li>PageSpeed - 谷歌</li>
+</ul>
+<h4 id="应用性能管理（APM）"><a href="#应用性能管理（APM）" class="headerlink" title="应用性能管理（APM）"></a>应用性能管理（APM）</h4><blockquote>
+<p>Application performance Management，提供对系统的实时监控以实现性能管理、故障管理的解决方案</p>
+<p>国内产品举例：<strong>听云</strong></p>
+</blockquote>
+<h3 id="安全测试"><a href="#安全测试" class="headerlink" title="安全测试"></a>安全测试</h3><blockquote>
+<p>对软件产品进行测试以确保其符合 <strong>产品安全需求</strong> 和 <strong>质量标准</strong></p>
+<p>通常相提并论提到的测试：<strong>渗透测试</strong></p>
+<p>通过模拟对软件系统的恶意攻击行为来评估系统安全性的一种测试</p>
+</blockquote>
+<h4 id="渗透测试-VS-安全测试"><a href="#渗透测试-VS-安全测试" class="headerlink" title="渗透测试 VS 安全测试"></a>渗透测试 VS 安全测试</h4><table>
+<thead>
+<tr>
+<th>渗透测试</th>
+<th>安全测试</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>攻</td>
+<td>防</td>
+</tr>
+<tr>
+<td>点</td>
+<td>面</td>
+</tr>
+<tr>
+<td>易</td>
+<td>难</td>
+</tr>
+</tbody></table>
+<h4 id="OWASP"><a href="#OWASP" class="headerlink" title="OWASP"></a>OWASP</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.owasp.org/index.php/Main_Page">Open Web Application Security Project</a></p>
+<ul>
+<li>OWASP Top 10</li>
+<li>Test Guide</li>
+</ul>
+</blockquote>
+<h4 id="安全测试工具"><a href="#安全测试工具" class="headerlink" title="安全测试工具"></a>安全测试工具</h4><ul>
+<li>Appscan</li>
+<li>Webinspect</li>
+<li>Nessus</li>
+<li>Nmap</li>
+<li>MetaSploit</li>
+<li>WebScarab</li>
+<li>Fortify</li>
+<li>W3AF</li>
+</ul>
+<h3 id="兼容性测试"><a href="#兼容性测试" class="headerlink" title="兼容性测试"></a>兼容性测试</h3><blockquote>
+<ul>
+<li>软件本身的兼容性 - 向后兼容</li>
+<li>不同平台下的兼容性 - 运行在多个平台</li>
+<li>软件对运行设备的兼容性 - 32位、64位、手机、电视盒子</li>
+<li>软件互操作性 - 软件之间的联动</li>
+</ul>
+</blockquote>
+<h4 id="浏览器内核"><a href="#浏览器内核" class="headerlink" title="浏览器内核"></a>浏览器内核</h4><ul>
+<li>Trident 4 - 6 —— IE 6 - 8 ，9，10</li>
+<li>Gecko —— FireFox</li>
+<li>WebKit —— Safari、Chrome</li>
+<li>presto —— Opera</li>
+</ul>
+<h4 id="浏览器兼容性测试工具"><a href="#浏览器兼容性测试工具" class="headerlink" title="浏览器兼容性测试工具"></a>浏览器兼容性测试工具</h4><ul>
+<li>BrowserShots</li>
+<li>Browser Sandbox</li>
+<li>Google 浏览器兼容测试插件</li>
+</ul>
+<h3 id="文档测试"><a href="#文档测试" class="headerlink" title="文档测试"></a>文档测试</h3><blockquote>
+<p>针对软件产品的交付品，配套的文档类部件的测试</p>
+<p>如：用户手册、使用说明、用户帮助文档等</p>
+</blockquote>
+<h4 id="文档测试关注要点"><a href="#文档测试关注要点" class="headerlink" title="文档测试关注要点"></a>文档测试关注要点</h4><ul>
+<li>完整性</li>
+<li>正确性</li>
+<li>一致性</li>
+<li>易理解性</li>
+<li>易浏览性</li>
+</ul>
+<h3 id="可靠性测试"><a href="#可靠性测试" class="headerlink" title="可靠性测试"></a>可靠性测试</h3><ul>
+<li>软件可靠性</li>
+<li>硬件可靠性</li>
+</ul>
+<h3 id="易用性测试"><a href="#易用性测试" class="headerlink" title="易用性测试"></a>易用性测试</h3><blockquote>
+<p>易用性测试是指测试用户使用软件时是否感觉方便，能否保证用户使用体验的测试类型</p>
+<p>一般针对：用户界面、用户交互、网站布局</p>
+</blockquote>
+<h3 id="本地化测试"><a href="#本地化测试" class="headerlink" title="本地化测试"></a>本地化测试</h3><blockquote>
+<p>针对软件的本地化版本实施的针对性测试</p>
+</blockquote>
+<h4 id="主要测试内容"><a href="#主要测试内容" class="headerlink" title="主要测试内容"></a>主要测试内容</h4><ul>
+<li>语言、书写习惯</li>
+<li>时区、日期格式、货币</li>
+<li>当地风俗、法律法规</li>
+<li>政治敏感内容</li>
+</ul>
+<h3 id="部署测试"><a href="#部署测试" class="headerlink" title="部署测试"></a>部署测试</h3><blockquote>
+<p>也称为安装测试，主要验证系统部署过程，并确保软件经过安装测试后可以正常使用</p>
+</blockquote>
+<h4 id="主要测试内容-1"><a href="#主要测试内容-1" class="headerlink" title="主要测试内容"></a>主要测试内容</h4><ul>
+<li>在不同环境下的部署验证</li>
+<li>参照部署文档执行，过程的合理、正确性</li>
+<li>基础数据</li>
+</ul>
+<h3 id="无障碍测试"><a href="#无障碍测试" class="headerlink" title="无障碍测试"></a>无障碍测试</h3><blockquote>
+<p>Accessibility Test 也称为访问性测试</p>
+<p>是指软件需要提供便于特殊人群使用的功能，包括视障、听障、老年人、身体残疾用户等，无障碍测试则是针对这部分功能的测试</p>
+</blockquote>
+<h2 id="其他的一些测试类型概念"><a href="#其他的一些测试类型概念" class="headerlink" title="其他的一些测试类型概念"></a>其他的一些测试类型概念</h2><h3 id="回归测试"><a href="#回归测试" class="headerlink" title="回归测试"></a>回归测试</h3><blockquote>
+<p>软件功能修改后，对软件进行重新测试以确认修改没有引入新的错误或导致其他部分产生错误</p>
+<p>回归测试的重心在 <strong>关键模块</strong> 和 <strong>重点功能</strong> 组件</p>
+<p>软件研发周期中会进行多次回归测试，且尽量实现自动化</p>
+</blockquote>
+<h3 id="Monkey-测试"><a href="#Monkey-测试" class="headerlink" title="Monkey 测试"></a>Monkey 测试</h3><blockquote>
+<p>Monkey 测试，也称搞怪测试</p>
+<p>就是用一些随机、稀奇古怪的方式来操作软件，以测试系统的健壮性和稳定性</p>
+</blockquote>
+<h3 id="冒烟测试"><a href="#冒烟测试" class="headerlink" title="冒烟测试"></a>冒烟测试</h3><blockquote>
+<p>来自于硬件板卡验证术语</p>
+<p>软件上则用于确认代码中的更改会按照预期运行，且不会破坏整个版本的稳定性</p>
+<p>“每日构建”中用冒烟测试来确认合入的代码没有影响主要功能的正常</p>
+</blockquote>
+<h3 id="A-B-测试"><a href="#A-B-测试" class="headerlink" title="A/B 测试"></a>A/B 测试</h3><blockquote>
+<p>多用于互联网行业，通过为页面提供 2个版本给用户使用并记录相关的用户行为数据，来确定优化设计的一种测试方案</p>
+</blockquote>
+<h4 id="A-B-测试实施要点"><a href="#A-B-测试实施要点" class="headerlink" title="A/B 测试实施要点"></a>A/B 测试实施要点</h4><ul>
+<li>多个方案并行</li>
+<li>每次测试仅改动一个变量</li>
+<li>按照某种规则进行优胜劣汰</li>
+</ul>
+<h4 id="A-B-测试工具"><a href="#A-B-测试工具" class="headerlink" title="A/B 测试工具"></a>A/B 测试工具</h4><ul>
+<li>Google Analytics Content Experiments</li>
+<li>Visual Website Optimizer</li>
+</ul>
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2024-11-16T19:26:50+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2024年11月16日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%97%A0%E6%A0%87%E7%AD%BE/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>无标签</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.laoliang.ink/posts/20190408175829/&title=软件测试的分类 - 老梁有墨&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.laoliang.ink/posts/20190408175829/&title=软件测试的分类 - 老梁有墨&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.laoliang.ink/posts/20190408175829/&title=软件测试的分类 - 老梁有墨&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a class='share'><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAEYCAAAAACi5bZQAAAC9ElEQVR42u3aQW7DMAwEwPz/0+0DWiDikjbMZHRLk9rW+LLg6vVj/bteCMCAAQMGDJg1MK9w/blg+H33fu/uU70+GDBgwIABA2YfzHEAOvz9VRt+9/fufsCAAQMGDBgwe2HeBqDDz6fXmQp8Y/sBAwYMGDBgwHwtTDf4nV63GvjAgAEDBgwYMGC6MN2geBoQwYABAwYMGDDfBzO1oWrw+rgmEgwYMGDAgAFzG0x8YPihn+P9gAEDBgwYMGDWwHRX98HTYu70OuX9gAEDBgwYMGDWwKQB6XRDU0XYdMADAwYMGDBgwOyHOS2qqoVZFTINgNUXUx5UgQEDBgwYMGAeD1MdGFUHWKcbmBqEpQeLwIABAwYMGDB7YKYKsdP/v7tou2yCBwYMGDBgwIB5DEx1ENV+gGLwqr64+PdgwIABAwYMmPUwYwVWc3WDYPUFggEDBgwYMGD2waQ3rA6m0gFW+rzVAAoGDBgwYMCA2Qdz+mDTB3bSQVgVJj44BAYMGDBgwIB5PEx6ACcdEE0Xe3GgOx1UgQEDBgwYMGAeB1MdAKVB7K7irF0QggEDBgwYMGDWwKQDqm4BlwKmz3nZoAoMGDBgwIAB8ziYboF2uvHpAJcOtMCAAQMGDBgw+2CqgSgt1qrXSwNae3AGBgwYMGDAgFkDM3Xg567fdYu68okqMGDAgAEDBszjYdIDQa+LVnXwlQ6ujgs3MGDAgAEDBszjYdJCLB14TQ2augUfGDBgwIABA+bzYboHg6qg6fPEwRAMGDBgwIABswamu6YKr27hNvViwYABAwYMGDB7YLqFWHVw1D7Yc1jQpQMyMGDAgAEDBsw+mGqgqxZs1SIvvW83QIIBAwYMGDBg9sJ0A1R6nekC8PT+YMCAAQMGDBgw1WJs/MBPGAzBgAEDBgwYMGCqwequYFe+DxgwYMCAAQNmLUy1cKseIEqLuSlwMGDAgAEDBsznwXSLq6mg1j241C4KwYABAwYMGDBrYCwwYMCAAQMGzLL1C8poaGGRVa9TAAAAAElFTkSuQmCC">
+          </div>
+        </div>
+      
+    
+      
+        <a class="-mob-share-telegram" title="" rel="external nofollow noopener noreferrer noopener"
+          
+            target="_blank" href="https://t.me/share/url?url=https://www.laoliang.ink/posts/20190408175829/&text=软件测试的分类 - 老梁有墨"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/posts/20200423162419/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>使用反向代理解决前端开发环境下的 CORS 问题</p>
+          <p class='content'>要解决前端开发环境下的 CORS（跨域资源共享） 问题，常见的解决方案是使用反向代理。以下是几种常见的实现方式：
+1. 使用 Nginx 反向代理Nginx 是一个轻量级、高性能的 Web 服务...</p>
+        </a>
+      
+      
+        <a class='next' href='/posts/20190311133421/'>
+          <p class='title'>Java面试-基础知识笔记<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>Synchronized （Java 关键字）
+作用： 能够保证在同一时刻最多只有一个线程执行该段代码，以达到保证并发安全的效果。
+
+两个用法对象锁
+方法锁：默认锁对象为 this 当前实例对象...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E6%B5%8B%E8%AF%95%E9%98%B6%E6%AE%B5%E5%88%86%E7%B1%BB"><span class="toc-text">按测试阶段分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-text">单元测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E7%9A%84%E5%8E%9F%E5%88%99"><span class="toc-text">单元测试的原则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E7%9A%84%E7%9B%8A%E5%A4%84"><span class="toc-text">单元测试的益处</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-text">单元测试的限制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6"><span class="toc-text">单元测试框架</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95"><span class="toc-text">集成测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95%E7%9A%84%E4%B8%BB%E8%A6%81%E5%AE%9E%E6%96%BD%E6%96%B9%E6%A1%88"><span class="toc-text">集成测试的主要实施方案</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%B5%8B%E8%AF%95"><span class="toc-text">系统测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E6%B3%A8%E7%82%B9"><span class="toc-text">关注点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E6%94%B6%E6%B5%8B%E8%AF%95"><span class="toc-text">验收测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%86%E5%88%86"><span class="toc-text">细分</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E6%B5%8B%E8%AF%95%E6%89%8B%E6%AE%B5%E5%88%86%E7%B1%BB"><span class="toc-text">按测试手段分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%91%E7%9B%92%E6%B5%8B%E8%AF%95"><span class="toc-text">黑盒测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%91%E7%9B%92%E6%B5%8B%E8%AF%95%E4%B8%BB%E8%A6%81%E6%B5%8B%E8%AF%95%E4%BB%80%E4%B9%88"><span class="toc-text">黑盒测试主要测试什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%91%E7%9B%92%E6%B5%8B%E8%AF%95%E7%9A%84%E4%B8%BB%E8%A6%81%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="toc-text">黑盒测试的主要设计方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BD%E7%9B%92%E6%B5%8B%E8%AF%95"><span class="toc-text">白盒测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E7%9A%84%E9%80%BB%E8%BE%91%E5%8D%95%E4%BD%8D"><span class="toc-text">主要的逻辑单位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-1"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-1"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%99%BD%E7%9B%92%E6%B5%8B%E8%AF%95%E7%9A%84%E4%B8%BB%E8%A6%81%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95"><span class="toc-text">白盒测试的主要测试方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%81%B0%E7%9B%92%E6%B5%8B%E8%AF%95"><span class="toc-text">灰盒测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%B5%8B%E8%AF%95"><span class="toc-text">静态测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%96%B9%E5%BC%8F"><span class="toc-text">测试方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E6%B5%8B%E8%AF%95"><span class="toc-text">动态测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%B7%A5%E6%B5%8B%E8%AF%95"><span class="toc-text">手工测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-2"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-2"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95"><span class="toc-text">自动化测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-3"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-3"><span class="toc-text">缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E6%B5%8B%E8%AF%95%E6%A8%A1%E5%BC%8F%E5%88%86%E7%B1%BB"><span class="toc-text">按测试模式分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E7%9A%84%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B"><span class="toc-text">传统的瀑布模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-4"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-4"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#V-%E6%A8%A1%E5%9E%8B"><span class="toc-text">V 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#W-%E6%A8%A1%E5%9E%8B"><span class="toc-text">W 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#X-%E6%A8%A1%E5%9E%8B"><span class="toc-text">X 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%8F%E6%8D%B7%E6%B5%8B%E8%AF%95"><span class="toc-text">敏捷测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%8F%E6%8D%B7%E6%B5%8B%E8%AF%95%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">敏捷测试的特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%8F%E6%8D%B7%E6%B5%8B%E8%AF%95-VS-%E4%BC%A0%E7%BB%9F%E6%B5%8B%E8%AF%95"><span class="toc-text">敏捷测试 VS 传统测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E8%84%9A%E6%9C%AC%E7%9A%84%E6%B5%8B%E8%AF%95"><span class="toc-text">基于脚本的测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E9%A3%8E%E9%99%A9%E7%9A%84%E6%B5%8B%E8%AF%95-RBT"><span class="toc-text">基于风险的测试 - RBT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%AA%E4%BA%9B%E6%98%AF%E9%A3%8E%E9%99%A9%EF%BC%9F"><span class="toc-text">哪些是风险？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%86%E5%88%AB%E9%A3%8E%E9%99%A9"><span class="toc-text">识别风险</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%AF%E8%83%BD%E6%80%A7"><span class="toc-text">可能性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%A5%E9%87%8D%E7%A8%8B%E5%BA%A6"><span class="toc-text">严重程度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%8E%A2%E7%B4%A2%E5%BC%8F%E7%9A%84%E6%B5%8B%E8%AF%95-ST"><span class="toc-text">基于探索式的测试 - ST</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ET-%E5%92%8C-ST-%E4%BD%BF%E7%94%A8"><span class="toc-text">ET 和 ST 使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ST-vs-ET"><span class="toc-text">ST vs ET</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A2%E7%B4%A2%E5%BC%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-text">探索式测试的优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A2%E7%B4%A2%E5%BC%8F%E6%B5%8B%E8%AF%95%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-text">探索式测试的缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E6%8E%A2%E7%B4%A2%E5%BC%8F%E6%B5%8B%E8%AF%95"><span class="toc-text">执行探索式测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%B5%8B%E8%AF%95-MBT"><span class="toc-text">基于模型的测试 - MBT</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E6%B5%8B%E8%AF%95%E7%B1%BB%E5%9E%8B%E5%88%86%E7%B1%BB"><span class="toc-text">按测试类型分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-text">功能测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">针对的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="toc-text">功能测试工具</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-text">性能测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-text">性能指标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="toc-text">性能测试工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0"><span class="toc-text">静态性能评估</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E6%80%A7%E8%83%BD%E7%AE%A1%E7%90%86%EF%BC%88APM%EF%BC%89"><span class="toc-text">应用性能管理（APM）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95"><span class="toc-text">安全测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95-VS-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95"><span class="toc-text">渗透测试 VS 安全测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OWASP"><span class="toc-text">OWASP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="toc-text">安全测试工具</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%BC%E5%AE%B9%E6%80%A7%E6%B5%8B%E8%AF%95"><span class="toc-text">兼容性测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8"><span class="toc-text">浏览器内核</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="toc-text">浏览器兼容性测试工具</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E6%B5%8B%E8%AF%95"><span class="toc-text">文档测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E6%B5%8B%E8%AF%95%E5%85%B3%E6%B3%A8%E8%A6%81%E7%82%B9"><span class="toc-text">文档测试关注要点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%9D%A0%E6%80%A7%E6%B5%8B%E8%AF%95"><span class="toc-text">可靠性测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%93%E7%94%A8%E6%80%A7%E6%B5%8B%E8%AF%95"><span class="toc-text">易用性测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%8C%96%E6%B5%8B%E8%AF%95"><span class="toc-text">本地化测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%B5%8B%E8%AF%95%E5%86%85%E5%AE%B9"><span class="toc-text">主要测试内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E6%B5%8B%E8%AF%95"><span class="toc-text">部署测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%B5%8B%E8%AF%95%E5%86%85%E5%AE%B9-1"><span class="toc-text">主要测试内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E9%9A%9C%E7%A2%8D%E6%B5%8B%E8%AF%95"><span class="toc-text">无障碍测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B5%8B%E8%AF%95%E7%B1%BB%E5%9E%8B%E6%A6%82%E5%BF%B5"><span class="toc-text">其他的一些测试类型概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E6%B5%8B%E8%AF%95"><span class="toc-text">回归测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Monkey-%E6%B5%8B%E8%AF%95"><span class="toc-text">Monkey 测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%92%E7%83%9F%E6%B5%8B%E8%AF%95"><span class="toc-text">冒烟测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A-B-%E6%B5%8B%E8%AF%95"><span class="toc-text">A&#x2F;B 测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#A-B-%E6%B5%8B%E8%AF%95%E5%AE%9E%E6%96%BD%E8%A6%81%E7%82%B9"><span class="toc-text">A&#x2F;B 测试实施要点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#A-B-%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="toc-text">A&#x2F;B 测试工具</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+		  
+		  <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="软件测试的分类";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+  // header 这里无论是否开启pjax都需要
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.add("show");
+  
+  
+    // cover
+    var cover_wrapper=document.querySelector('.cover-wrapper');
+    
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
+    
+  
+</script>
+
+        </div>
+        
+  
+  <footer class="footer clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fa-solid fa-square-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+              </a>
+            
+          
+            
+              <a href="mailto:me@laoliang.ink"
+                class="social fa-regular fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+              </a>
+            
+          
+            
+              <a href="https://github.com/liangpengyv"
+                class="social fa-brands fa-github-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+              </a>
+            
+          
+            
+              <a href="https://space.bilibili.com/222021151"
+                class="social fa-brands fa-bilibili flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+                
+              </a>
+            
+          
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div class='copyright'>
+        <p>Copyright © 2015-2024 By <a href="/about" class="licenses">LaoLiang</a></p>
+
+        </div>
+      
+    
+      
+        
+          <div><br></div>
+        
+      
+    
+      
+        
+          <div><p><a href="http://beian.miit.gov.cn/" target="_blank" class="records">蜀ICP备18017114号-1</a></p>
+</div>
+        
+      
+    
+  </footer>
+
+
+        <a id="s-top" class="fas fa-arrow-up fa-fw" href="javascript:void(0)"></a>
+      </div>
+    </div>
+    <div>
+      <script>
+/************这个文件存放不需要重载的全局变量和全局函数*********/
+window.volantis={};
+window.volantis.loadcss=document.getElementById("loadcss");
+/******************** Pjax ********************************/
+function VPjax(){
+	this.list=[] // 存放回调函数
+	this.start=()=>{
+	  for(var i=0;i<this.list.length;i++){
+		this.list[i].run();
+	  }
+	}
+	this.push=(fn,name)=>{
+		var f=new PjaxItem(fn,name);
+		this.list.push(f);
+	}
+	// 构造一个可以run的对象
+	function PjaxItem(fn,name){
+		// 函数名称
+		this.name = name || fn.name
+		// run方法
+		this.run=()=>{
+			fn()
+		}
+	}
+}
+volantis.pjax={}
+volantis.pjax.method={
+	complete: new VPjax(),
+	error: new VPjax(),
+	send: new VPjax()
+}
+volantis.pjax={
+	...volantis.pjax,
+	push: volantis.pjax.method.complete.push,
+	error: volantis.pjax.method.error.push,
+	send: volantis.pjax.method.send.push
+}
+/********************脚本懒加载函数********************************/
+// 已经加入了setTimeout
+function loadScript(src, cb) {
+	setTimeout(function() {
+		var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+		var script = document.createElement('script');
+		script.setAttribute('type','text/javascript');
+		if (cb) script.onload = cb;
+		script.setAttribute('src', src);
+		HEAD.appendChild(script);
+	});
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script>
+<script>
+  
+  loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css", window.volantis.loadcss);
+  
+  
+  
+  
+</script>
+<!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+  function Pjax_SCload_fancybox(){
+	if (typeof $.fancybox == "undefined") {
+	 SCload_fancybox();
+    } else {
+	 pjax_fancybox();
+    }
+  }
+  volantis.pjax.push(Pjax_SCload_fancybox)
+  volantis.pjax.send(()=>{
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+  },'fancybox')
+</script>
+
+
+<!-- internal -->
+
+
+
+
+<script>
+  function loadIssuesJS() {
+    if ($(".md").find(".issues-api").length == 0) return;
+	
+	  loadScript('/js/issues.js');
+	
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  volantis.pjax.push(()=>{
+	if (typeof IssuesAPI == "undefined") {
+	  loadIssuesJS();
+	}
+  },"IssuesJS")
+</script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+
+<script>
+  window.FPConfig = {
+	delay: 0,
+	ignoreKeywords: [],
+	maxRPS: 5,
+	hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+    var valine = new Valine();
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"uqAaIWIv2ofAppjRUdcP2OwR-gzGzoHsz","appKey":"FTjmS9XeCFVoXj9ICXOPmULy","meta":"nick,mail","requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-CN","highlight":true,"mathJax":false,"visitor":true}, {
+      el: '#valine_container',
+      path: path,
+      placeholder: pagePlaceholder,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps,
+    }))
+  }
+  $(function () {
+    pjax_valine();
+  });
+  volantis.pjax.push(pjax_valine);
+</script>
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('/js/search/hexo.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+		document.addEventListener("pjax:success", listenSearch);
+	
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'uqAaIWIv2ofAppjRUdcP2OwR-gzGzoHsz',
+    app_key: 'FTjmS9XeCFVoXj9ICXOPmULy',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://www.laoliang.ink' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://www.laoliang.ink' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://www.laoliang.ink' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+<script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script>
+
+<!-- more -->
+
+ 
+	   
+	    
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+	  // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.send.start();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+		// 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+		volantis.pjax.method.complete.start();
+      } catch (e) {
+        console.log(e);
+      }
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+	  // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.error.start();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+ 
+	  
+    </div>
+  </body>
+</html>
