@@ -3,7 +3,12 @@ layout: docs
 seo_title: 读书
 bottom_meta: false
 cover: true
-sidebar: [blogger, qrcode, donate, webinfo]
+sidebar: [
+  blogger,
+  # qrcode,
+  # donate,
+  webinfo
+]
 valine:
   placeholder: 有什么书想对我推荐呢？
 ---
