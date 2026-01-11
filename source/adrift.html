@@ -89,6 +89,7 @@
             border: 1px solid rgba(255,255,255,0.3);
             border-radius: 2px;
             transition: all 0.3s ease;
+            text-align: center;
         }
 
         .instruction:hover {
@@ -108,16 +109,18 @@
             letter-spacing: 0.1rem;
             text-align: center;
             animation: fadeInAudioHint 2s ease-out 1s both;
-            display: inline-flex;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            white-space: nowrap;
+            gap: 0.3rem;
+            line-height: 1.6;
         }
 
         .audio-hint::before {
             content: '🎧';
             font-size: 1.2em;
+            margin-bottom: 0.3rem;
         }
 
         @keyframes fadeInAudioHint {
@@ -466,8 +469,14 @@
         <div id="titleScreen">
             <div class="title">一苇</div>
             <div class="subtitle">Adrift</div>
-            <div class="instruction" onclick="startGame()">点击开启旅程</div>
-            <div class="audio-hint">请打开声音,佩戴耳机效果更佳</div>
+            <div class="instruction" onclick="startGame()" style="line-height: 1.6;">
+                点击开启旅程<br>
+                <span style="font-size: 0.75em; opacity: 0.75; letter-spacing: 0.08em; display: inline-block; margin-top: 0.2rem;">Click to Begin</span>
+            </div>
+            <div class="audio-hint">
+                <span>请打开声音,佩戴耳机效果更佳</span>
+                <span style="font-size: 0.85em; opacity: 0.8;">Sound on, headphones recommended</span>
+            </div>
         </div>
 
         <div id="chapterInfo" style="opacity: 0;">
@@ -495,29 +504,43 @@
             </div>
             <div id="journeyReview">
                 <div class="review-timeline">
-                    <div class="review-stage">破晓</div>
-                    <div class="review-stage">晨光</div>
-                    <div class="review-stage">正午</div>
-                    <div class="review-stage">午后</div>
-                    <div class="review-stage">星夜</div>
+                    <div class="review-stage" style="line-height: 1.5;">破晓<br><span style="font-size: 0.7em; opacity: 0.65; display: inline-block; margin-top: 0.1rem;">Dawn</span></div>
+                    <div class="review-stage" style="line-height: 1.5;">晨光<br><span style="font-size: 0.7em; opacity: 0.65; display: inline-block; margin-top: 0.1rem;">Morning</span></div>
+                    <div class="review-stage" style="line-height: 1.5;">正午<br><span style="font-size: 0.7em; opacity: 0.65; display: inline-block; margin-top: 0.1rem;">Noon</span></div>
+                    <div class="review-stage" style="line-height: 1.5;">午后<br><span style="font-size: 0.7em; opacity: 0.65; display: inline-block; margin-top: 0.1rem;">Afternoon</span></div>
+                    <div class="review-stage" style="line-height: 1.5;">星夜<br><span style="font-size: 0.7em; opacity: 0.65; display: inline-block; margin-top: 0.1rem;">Twilight</span></div>
                 </div>
             </div>
             <div id="nameInput">
-                <input type="text" placeholder="为这段航程留下一个名字..." maxlength="20" id="journeyName">
+                <input type="text" placeholder="您的名字... / Your name..." maxlength="20" id="journeyName">
             </div>
-            <button class="share-btn" id="shareBtn" onclick="generateShareImage()" disabled>生成分享卡片</button>
-            <button class="restart-btn" onclick="location.reload()">重启旅程</button>
+            <button class="share-btn" id="shareBtn" onclick="generateShareImage()" disabled style="line-height: 1.6;">
+                生成分享卡片<br>
+                <span style="font-size: 0.75em; opacity: 0.75; display: inline-block; margin-top: 0.1rem;">Generate Card</span>
+            </button>
+            <button class="restart-btn" onclick="location.reload()" style="line-height: 1.6;">
+                重启旅程<br>
+                <span style="font-size: 0.75em; opacity: 0.75; display: inline-block; margin-top: 0.1rem;">Restart</span>
+            </button>
         </div>
 
         <div class="share-dialog" id="shareDialog">
+            <button class="close-dialog-btn" onclick="closeShareDialog()" style="position: absolute; top: 12px; right: 12px; background: rgba(10,10,10,0.05); color: #0a0a0a; border: 1px solid rgba(10,10,10,0.2); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 18px; line-height: 1; transition: all 0.3s ease; padding: 0; display: flex; align-items: center; justify-content: center; z-index: 10;" onmouseover="this.style.background='rgba(10,10,10,0.1)'; this.style.borderColor='rgba(10,10,10,0.4)'" onmouseout="this.style.background='rgba(10,10,10,0.05)'; this.style.borderColor='rgba(10,10,10,0.2)'">×</button>
             <div id="shareImagePreview" style="margin-bottom: 1rem; display: none; position: relative;">
                 <img id="previewImage" style="max-width: 180px; width: 100%; height: auto; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: block; margin: 0 auto; cursor: zoom-in;" alt="分享卡片预览" onclick="openImageLightbox()">
-                <button id="downloadBtn" onclick="downloadShareImage()" style="position: absolute; bottom: 8px; right: calc(50% - 90px + 8px); background: rgba(10,10,10,0.8); color: #f0f0f0; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; backdrop-filter: blur(4px); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(10,10,10,0.95)'" onmouseout="this.style.background='rgba(10,10,10,0.8)'">
-                    下载
-                </button>
+                <div style="position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); background: rgba(10,10,10,0.8); color: #f0f0f0; padding: 6px 12px; border-radius: 4px; font-size: 12px; backdrop-filter: blur(4px); pointer-events: none; white-space: nowrap; text-align: center; line-height: 1.4;">
+                    点击放大<br><span style="font-size: 0.85em; opacity: 0.7;">Click to enlarge</span>
+                </div>
             </div>
-            <p>每一段旅程都值得被记录<br>不妨与朋友分享这份独特的体验</p>
-            <button onclick="closeShareDialog()">好的</button>
+            <p style="line-height: 1.8;">
+                每一段旅程都值得被记录<br>
+                不妨与朋友分享这份独特的体验<br>
+                <span style="font-size: 0.85em; opacity: 0.7; margin-top: 0.5rem; display: inline-block; line-height: 1.6;">
+                    Every journey deserves to be remembered<br>
+                    Share this unique experience with friends
+                </span>
+            </p>
+            <button id="confirmBtn" onclick="handleConfirmClick()" style="line-height: 1.5;">好的 / OK</button>
         </div>
 
         <!-- 图片放大查看遮罩层 -->
@@ -743,55 +766,142 @@
 
         // Reflection messages for drifting items
         const reflections = {
-            'paper-plane': '"那时候,总以为海的那边是金色的"',
-            'book': '"知识是灯塔,但智慧是航向"',
-            'briefcase': '"负重前行,也要记得抬头看星"',
-            'clock': '"时间从不停歇,但我们可以选择节奏"',
-            'feather': '"放下,也是一种前进"'
+            'paper-plane': {
+                zh: '"那时候,总以为海的那边是金色的"',
+                en: '"Back then, I believed the other side of the sea was golden"'
+            },
+            'book': {
+                zh: '"知识是灯塔,但智慧是航向"',
+                en: '"Knowledge is the lighthouse, but wisdom is the course"'
+            },
+            'briefcase': {
+                zh: '"负重前行,也要记得抬头看星"',
+                en: '"Carry the weight, but remember to look up at the stars"'
+            },
+            'clock': {
+                zh: '"时间从不停歇,但我们可以选择节奏"',
+                en: '"Time never stops, but we can choose our rhythm"'
+            },
+            'feather': {
+                zh: '"放下,也是一种前进"',
+                en: '"Letting go is also a way forward"'
+            }
         };
 
         // Chapter-specific ambient reflections
         const chapterReflections = {
             0: [ // 序章·破晓
-                '"每一次启程,都是一次重生"',
-                '"黎明前的海,静得像一个秘密"',
-                '"起点没有重量,只有可能"',
-                '"第一道光,照亮的不是海,是心"'
+                {
+                    zh: '"每一次启程,都是一次重生"',
+                    en: '"Every departure is a rebirth"'
+                },
+                {
+                    zh: '"黎明前的海,静得像一个秘密"',
+                    en: '"The sea before dawn, quiet as a secret"'
+                },
+                {
+                    zh: '"起点没有重量,只有可能"',
+                    en: '"The starting point has no weight, only possibility"'
+                },
+                {
+                    zh: '"第一道光,照亮的不是海,是心"',
+                    en: '"The first light illuminates not the sea, but the heart"'
+                }
             ],
             1: [ // 初章·晨光
-                '"那时候,总以为海的那边是金色的"',
-                '"童年的风,吹过来的都是梦"',
-                '"每一朵浪花,都像是一次欢笑"',
-                '"无畏,是因为还不知道害怕"',
-                '"那些纸飞机,飞向的是明天"'
+                {
+                    zh: '"那时候,总以为海的那边是金色的"',
+                    en: '"Back then, I believed the other side of the sea was golden"'
+                },
+                {
+                    zh: '"童年的风,吹过来的都是梦"',
+                    en: '"The wind of childhood carries only dreams"'
+                },
+                {
+                    zh: '"每一朵浪花,都像是一次欢笑"',
+                    en: '"Every wave feels like laughter"'
+                },
+                {
+                    zh: '"无畏,是因为还不知道害怕"',
+                    en: '"Fearless, because fear is yet unknown"'
+                },
+                {
+                    zh: '"那些纸飞机,飞向的是明天"',
+                    en: '"Those paper planes fly toward tomorrow"'
+                }
             ],
             2: [ // 征途·正午
-                '"正午的太阳,晒不干征途的汗水"',
-                '"每一个波浪,都是一次考验"',
-                '"奋斗的意义,在远方等着你"',
-                '"疲惫时,别忘了为什么出发"',
-                '"风浪越大,成长越快"'
+                {
+                    zh: '"正午的太阳,晒不干征途的汗水"',
+                    en: '"The midday sun cannot dry the sweat of the journey"'
+                },
+                {
+                    zh: '"每一个波浪,都是一次考验"',
+                    en: '"Every wave is a test"'
+                },
+                {
+                    zh: '"奋斗的意义,在远方等着你"',
+                    en: '"The meaning of struggle awaits you in the distance"'
+                },
+                {
+                    zh: '"疲惫时,别忘了为什么出发"',
+                    en: '"When weary, remember why you set sail"'
+                },
+                {
+                    zh: '"风浪越大,成长越快"',
+                    en: '"The greater the storm, the faster the growth"'
+                }
             ],
             3: [ // 沉思·午后
-                '"午后日光不断向下，但也是最炙热的时候"',
-                '"中年的海,波澜不惊,却深不见底"',
-                '"回头看,才发现路已经走了这么远"',
-                '"放下一些,才能继续前行"',
-                '"沉思不是停滞,而是为了看清方向"'
+                {
+                    zh: '"午后日光不断向下，但也是最炙热的时候"',
+                    en: '"Afternoon light descends, yet burns the brightest"'
+                },
+                {
+                    zh: '"中年的海,波澜不惊,却深不见底"',
+                    en: '"The sea of middle age appears calm, yet its depths are unfathomable"'
+                },
+                {
+                    zh: '"回头看,才发现路已经走了这么远"',
+                    en: '"Looking back, only then do we see how far we\'ve come"'
+                },
+                {
+                    zh: '"放下一些,才能继续前行"',
+                    en: '"Let go of some things to move forward"'
+                },
+                {
+                    zh: '"沉思不是停滞,而是为了看清方向"',
+                    en: '"Reflection is not stagnation, but clarity of direction"'
+                }
             ],
             4: [ // 宁静·星夜
-                '"星夜下,一切都归于平静"',
-                '"终点不是结束,是另一种开始"',
-                '"走过的路,都化作了星光"',
-                '"归航时,心中早已是彼岸"',
-                '"宁静,是岁月赠予的礼物"'
+                {
+                    zh: '"星夜下,一切都归于平静"',
+                    en: '"Under the starry night, all returns to stillness"'
+                },
+                {
+                    zh: '"终点不是结束,是另一种开始"',
+                    en: '"The end is not the finish, but another beginning"'
+                },
+                {
+                    zh: '"走过的路,都化作了星光"',
+                    en: '"The path traveled becomes starlight"'
+                },
+                {
+                    zh: '"归航时,心中早已是彼岸"',
+                    en: '"When returning, the heart has already reached the shore"'
+                },
+                {
+                    zh: '"宁静,是岁月赠予的礼物"',
+                    en: '"Tranquility is the gift of time"'
+                }
             ]
         };
 
         // Chapter definitions
         const chapters = [
             {
-                name: "序章",
+                name: "序章 · Prologue",
                 subtitle: "破晓 · Dawn",
                 musicUrl: "https://image.cdn2.seaart.me/2025-12-30/d59kqlde878c73fjkekg/f2970abb3df022f88493ed0f3674d435.mp3",
                 speedMultiplier: 0.4,
@@ -813,7 +923,7 @@
                 distanceRange: [0, 5000]
             },
             {
-                name: "初章",
+                name: "初章 · Childhood",
                 subtitle: "晨光 · Morning",
                 musicUrl: "https://image.cdn2.seaart.me/2025-12-30/d59kr25e878c738gd5o0/af73345e8f431501a85a839eabd6618c.mp3",
                 musicStartTime: 5, // 从第5秒开始播放,跳过静音部分
@@ -836,7 +946,7 @@
                 distanceRange: [5000, 21000]
             },
             {
-                name: "征途",
+                name: "征途 · Journey",
                 subtitle: "正午 · Noon",
                 musicUrl: "https://image.cdn2.seaart.me/2025-12-30/d59krj5e878c73fjkphg/57b9f0ad40f2ae64244952c8040d4413.mp3",
                 speedMultiplier: 1.8,
@@ -858,7 +968,7 @@
                 distanceRange: [21000, 37000]
             },
             {
-                name: "沉思",
+                name: "沉思 · Reflection",
                 subtitle: "午后 · Afternoon",
                 musicUrl: "https://image.cdn2.seaart.me/2025-12-30/d59ks2de878c73fjktm0/044217ce05fc6d49275a7f439f4756b4.mp3",
                 speedMultiplier: 0.7,
@@ -883,7 +993,7 @@
                 heavyResistance: true     // 标记为高阻力章节
             },
             {
-                name: "宁静",
+                name: "宁静 · Tranquility",
                 subtitle: "星夜 · Twilight",
                 musicUrl: "https://image.cdn2.seaart.me/2025-12-30/d59ksjte878c73fjl010/d890cd1668d97acf848e4570182a5c25.mp3",
                 speedMultiplier: 0.45,
@@ -1183,7 +1293,9 @@
                          (navigator.maxTouchPoints > 0);
         
         // 根据设备类型显示不同的控制提示
-        controlHint.textContent = isMobile ? '长按屏幕前行 · 松开随波逐流' : '长按空格键前行 · 松开随波逐流';
+        controlHint.innerHTML = isMobile
+            ? '<div style="line-height: 1.8;">长按屏幕前行 · 松开随波逐流<br><span style="font-size: 0.85em; opacity: 0.7; display: inline-block; margin-top: 0.2rem;">Hold to move · Release to drift</span></div>'
+            : '<div style="line-height: 1.8;">长按空格键前行 · 松开随波逐流<br><span style="font-size: 0.85em; opacity: 0.7; display: inline-block; margin-top: 0.2rem;">Hold Space to move · Release to drift</span></div>';
 
         document.addEventListener('keydown', (e) => {
             if (e.code === 'Space' || e.key === ' ') {
@@ -1296,7 +1408,10 @@
             if (!message) return;
 
             const msgEl = document.getElementById('reflectionMessage');
-            msgEl.textContent = message;
+            msgEl.innerHTML = `
+                <div style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 0.4rem;">${message.zh}</div>
+                <div style="font-size: 0.9rem; opacity: 0.7; font-style: italic; line-height: 1.5;">${message.en}</div>
+            `;
             msgEl.classList.add('active');
 
             setTimeout(() => {
@@ -1311,7 +1426,10 @@
 
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
             const msgEl = document.getElementById('reflectionMessage');
-            msgEl.textContent = randomMessage;
+            msgEl.innerHTML = `
+                <div style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 0.4rem;">${randomMessage.zh}</div>
+                <div style="font-size: 0.9rem; opacity: 0.7; font-style: italic; line-height: 1.5;">${randomMessage.en}</div>
+            `;
             msgEl.classList.add('active');
 
             setTimeout(() => {
@@ -2912,6 +3030,12 @@
                     shareBtn.classList.remove('loading');
                     shareBtn.textContent = '生成分享卡片';
 
+                    // Update URL with query parameters
+                    const newUrl = new URL(window.location);
+                    newUrl.searchParams.set('page', 'share');
+                    newUrl.searchParams.set('name', encodeURIComponent(journeyName));
+                    window.history.pushState({}, '', newUrl);
+
                     // Show share dialog
                     document.getElementById('shareDialog').classList.add('active');
                 }, 'image/png');
@@ -2926,21 +3050,20 @@
             a.href = window.shareImageData.url;
             a.download = window.shareImageData.filename;
             a.click();
+        }
 
-            // 可选: 下载后更改按钮文字提示
-            const downloadBtn = document.getElementById('downloadBtn');
-            downloadBtn.innerHTML = '<span style="margin-right: 4px;">✓</span>已下载';
-            downloadBtn.disabled = true;
-            downloadBtn.style.opacity = '0.7';
-            downloadBtn.style.cursor = 'default';
+        // 处理确认按钮点击事件
+        function handleConfirmClick() {
+            const confirmBtn = document.getElementById('confirmBtn');
 
-            // 3秒后恢复按钮状态
-            setTimeout(() => {
-                downloadBtn.innerHTML = '下载';
-                downloadBtn.disabled = false;
-                downloadBtn.style.opacity = '1';
-                downloadBtn.style.cursor = 'pointer';
-            }, 3000);
+            // 如果还未下载，执行下载
+            if (confirmBtn.textContent.includes('好的') || confirmBtn.textContent.includes('OK')) {
+                downloadShareImage();
+                confirmBtn.textContent = '已下载 / Downloaded';
+                confirmBtn.disabled = true;
+                confirmBtn.style.opacity = '0.7';
+                confirmBtn.style.cursor = 'default';
+            }
         }
 
         // 打开图片放大查看
@@ -3036,7 +3159,7 @@
             const dialog = document.getElementById('shareDialog');
             const previewImg = document.getElementById('previewImage');
             const previewContainer = document.getElementById('shareImagePreview');
-            const downloadBtn = document.getElementById('downloadBtn');
+            const confirmBtn = document.getElementById('confirmBtn');
 
             // Clean up blob URL to prevent memory leak
             if (previewImg.src && previewImg.src.startsWith('blob:')) {
@@ -3048,15 +3171,21 @@
                 delete window.shareImageData;
             }
 
-            // Reset download button state
-            downloadBtn.innerHTML = '<span style="margin-right: 4px;">↓</span>下载';
-            downloadBtn.disabled = false;
-            downloadBtn.style.opacity = '1';
-            downloadBtn.style.cursor = 'pointer';
+            // Reset confirm button state
+            confirmBtn.textContent = '好的 / OK';
+            confirmBtn.disabled = false;
+            confirmBtn.style.opacity = '1';
+            confirmBtn.style.cursor = 'pointer';
 
             // Hide preview and clear source
             previewContainer.style.display = 'none';
             previewImg.src = '';
+
+            // Remove URL query parameters
+            const newUrl = new URL(window.location);
+            newUrl.searchParams.delete('page');
+            newUrl.searchParams.delete('name');
+            window.history.pushState({}, '', newUrl);
 
             // Close dialog
             dialog.classList.remove('active');
@@ -3074,6 +3203,38 @@
 
         // 绘制初始画面(包含所有元素)
         draw();
+
+        // 检查 URL 参数，如果有分享参数则直接进入结束画面并生成分享卡片
+        (function checkUrlParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const page = urlParams.get('page');
+            const name = urlParams.get('name');
+
+            if (page === 'share' && name) {
+                // 隐藏开始指令
+                const instruction = document.querySelector('.instruction');
+                if (instruction) {
+                    instruction.style.display = 'none';
+                }
+
+                // 显示结束画面
+                const endingScreen = document.getElementById('endingScreen');
+                endingScreen.classList.add('active');
+
+                // 填入姓名
+                const journeyNameInput = document.getElementById('journeyName');
+                journeyNameInput.value = decodeURIComponent(name);
+
+                // 启用分享按钮
+                const shareBtn = document.getElementById('shareBtn');
+                shareBtn.disabled = false;
+
+                // 延迟生成分享卡片，等待 DOM 完全渲染
+                setTimeout(() => {
+                    generateShareImage();
+                }, 500);
+            }
+        })();
     </script>
 
 <!-- Element Selector Loader (Auto-injected by Vite) -->
